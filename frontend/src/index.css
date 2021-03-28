@@ -1,4 +1,20 @@
 
+/* Makes space for the Footer Component in App.js*/
 main {
     min-height: 80vh;
+}
+
+/* Make the font size a little smaller in the Footer Component */
+Footer {
+    font-size: 12px;
+}
+
+/* Add some spacing btw our stars in the Rating Component */
+.rating span {
+    margin: 0.05rem;
+}
+
+/* Add some padding around the price in the Product component */
+.product-card .price-space {
+    padding: 1rem 0;
 }
