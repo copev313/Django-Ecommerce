@@ -9,7 +9,7 @@ function Footer() {
                     <Row>
                         <Col className="text-center py-3">
                             <div>Copyright &copy; 2021 Boutsacado.</div>
-                            <div>Logo and flavicon made by {' '}
+                            <div>Logo made by {' '}
                                 <a href="https://www.flaticon.com/authors/darius-dan"
                                                   title="Darius Dan">Darius Dan</a> {/* and {' '}
                                 <a href="https://www.flaticon.com/authors/good-ware"
