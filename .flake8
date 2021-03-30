@@ -1,0 +1,11 @@
+[flake8]
+ignore = W293
+exclude = 
+        .git,
+        __pycache__,
+        backend\base\products.py,
+        backend\backend\settings.py,
+        build,
+        dist
+max-complexity = 10
+statistics = True
