@@ -4,6 +4,7 @@ exclude =
         .git,
         __pycache__,
         backend\base\products.py,
+        backend\base\migrations\*.py,
         backend\backend\settings.py,
         build,
         dist

@@ -4,6 +4,21 @@ main {
     min-height: 80vh;
 }
 
+/* Precisely position our logo next to our navbar title */
+#website-navbar-title {
+    vertical-align: 0.2em;   
+}
+
+/*
+#navbar-cart-link {
+    
+}
+
+#navbar-login-link {
+
+}
+*/
+
 /* Make the font size a little smaller in the Footer Component */
 Footer {
     font-size: 12px;
