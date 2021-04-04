@@ -23,7 +23,7 @@ function ProductScreen({ match }) {
 
     return (
         <div>
-            <Link to="/" className="btn btn-dark my-3">
+            <Link to="/" className="btn btn-dark my-4">
                 Go Back
             </Link>
 
@@ -81,8 +81,13 @@ function ProductScreen({ match }) {
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Button className="btn-block btn-lg btn-info" disabled={product.countInStock === 0}type="button">
-                                    Add to Cart
+                                <Button className={`btn-block btn-lg 
+                                                    ${(product.countInStock === 0) ?
+                                                        'btn-secondary' : 'btn-info'}`
+                                                }
+                                        disabled={product.countInStock === 0}
+                                        type="button">
+                                    ADD TO CART
                                 </Button>
                             </ListGroup.Item>
                         </ListGroup>
