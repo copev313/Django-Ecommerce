@@ -45,12 +45,14 @@ function ProductScreen({ match }) {
                             />
                         </ListGroup.Item>
 
+                        {/* Didn't see the point in having the price listed twice.
                         <ListGroup.Item>
                             <ins>Price</ins>: ${product.price}
                         </ListGroup.Item>
+                        */}
 
                         <ListGroup.Item>
-                            <ins>Description</ins>: 
+                            <ins id="description-title">Description</ins>: 
                             <br></br>
                             {product.description}
                         </ListGroup.Item>
