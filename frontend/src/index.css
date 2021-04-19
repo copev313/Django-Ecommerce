@@ -28,7 +28,12 @@ Footer {
     margin: 0.05rem;
 }
 
-/* Add some padding around the price in the Product component */
+/* Add some padding around the price in the Product Component */
 .product-card .price-space {
     padding: 1rem 0;
+}
+
+/* Darken the green `success` colored product titles in the Product Component */
+.product-card .product-title {
+    color: rgb(0, 175, 0);
 }
