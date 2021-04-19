@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 import { listProducts } from '../actions/productActions';
 
 function HomeScreen() {
@@ -18,24 +20,26 @@ function HomeScreen() {
     return (
         <div>
             <h2 className="mt-5">Latest Products</h2>
-
             { loading ? (  <div>
                                 <br></br>
-                                <h4>Loading . . .</h4>
+                                <Loader />
                             </div>
-            ) : error ? (   <div>
-                                <br></br>
-                                <h4>{error}</h4>
-                            </div>
-            ) : (   <Row>
-                        {products.map( (product) => (
-                            <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
-                                <Product product={product}/>
-                            </Col>
-                        ))}
-                    </Row>
-                )
-            }
+            )
+            : error ? ( <div>
+                            <br></br>
+                            <Message variant="danger">
+                                {error}
+                            </Message>
+                        </div>
+            )
+            : ( <Row>
+                    {products.map( (product) => (
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
+                            <Product product={product}/>
+                        </Col>
+                    ))}
+                </Row>
+            )}
         </div>
     );
 }
