@@ -110,7 +110,6 @@ function ProductScreen({ match, history }) {
                                                             </option>
                                                         ))
                                                     }
-
                                                 </Form.Control>
                                             </Col>
                                         </Row>

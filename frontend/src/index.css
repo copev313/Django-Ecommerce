@@ -10,12 +10,12 @@ main { min-height: 80vh; }
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-style: italic;
-    font-size: 32px;
+    font-size: 2rem;
     color: #fff;
-    text-shadow: 3px 3px 3px rgb(71, 64, 64);
-    letter-spacing: 0.025em;
+    text-shadow: 2px 2px 2px rgb(71, 64, 64);
+    letter-spacing: 0.04em;
     vertical-align: -0.1em;
-    margin-left: -1.2em;
+    margin-left: -1.25em;
 }
 
 /* Make the font size a little smaller in the Footer Component */
@@ -33,7 +33,21 @@ Footer {
     padding: 1rem 0;
 }
 
-/* Darken the green `success` colored product titles in the Product Component */
-.product-card .product-title {
+/* Darken the green `success` colored product titles in the Product Component & CartScreen */
+.product-title {
     color: rgb(0, 175, 0);
 }
+
+/* Fix spacing around Shopping Cart title */
+#shopping-cart-title {
+    font-size: 1.8rem;
+    padding: 1rem 0;
+}
+
+/*
+.h2 {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+}
+*/
+
