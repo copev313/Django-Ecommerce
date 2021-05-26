@@ -30,15 +30,19 @@ function Header() {
 
                             <LinkContainer to="/cart">
                                 <Nav.Link className="text-right font-weight-light">
-                                    <i className="fas fa-shopping-cart"></i>{' '}
-                                    CART
+                                    <span className="h6">
+                                        <i className="fas fa-shopping-cart"></i>{' '}
+                                        CART
+                                    </span>
                                 </Nav.Link>
                             </LinkContainer>
 
                             <LinkContainer to="/login">
                                 <Nav.Link className="text-right font-weight-light ml-1">
-                                    <i className="fas fa-user"></i>{' '}
-                                    LOGIN
+                                    <span className="h6">
+                                        <i className="fas fa-user"></i>{' '}
+                                        LOGIN
+                                    </span>
                                 </Nav.Link>
                             </LinkContainer>
 

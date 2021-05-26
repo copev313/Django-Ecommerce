@@ -23,6 +23,12 @@ function CartScreen({ match, location, history }) {
         }
     }, [dispatch, productId, qty])
 
+    /*
+    const continueShoppingHandler = () => {
+        // Redirect to home page:
+        history.push('/')
+    }
+    */
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -43,14 +49,16 @@ function CartScreen({ match, location, history }) {
                 <br></br>
 
                 {cartItems.length === 0 ? (
+                    
                     <Message variant="primary">
                         Your cart is empty. {' '}
                         <Link   className=""
                                 to="/"
                         >
-                            Go Back
+                            Continue browsing
                         </Link>
                     </Message>
+
                 )
                 : (
                     <ListGroup variant="flush">
@@ -106,6 +114,21 @@ function CartScreen({ match, location, history }) {
                                 </Row>
                             </ListGroup.Item>
                         ))}
+                        <ListGroup.Item>
+                            <Row>
+                                <Col md={6}>
+                                    <Button
+                                        type="button"
+                                        class="btn btn-outline-primary px-4"
+                                        onClick={() => history.push('/')}  // Redirect to home page
+                                    >
+                                        Continue Shopping
+                                    </Button>
+                                </Col>
+
+                                <Col md={5}> </Col>
+                            </Row>
+                        </ListGroup.Item>
                     </ListGroup>
                 )}
             </Col>
@@ -115,10 +138,13 @@ function CartScreen({ match, location, history }) {
                     <ListGroup variant="flush">
                         <ListGroup.Item>
                             <h3>
-                                Subtotal: ({cartItems.reduce(
-                                                (acc, item) =>  acc + item.qty, 0 )
-                                            })
-                                {' '} Items
+                                Subtotal: {' '}
+                                <strong>
+                                    {cartItems.reduce(
+                                        (acc, item) =>  acc + item.qty, 0 )
+                                    }
+                                </strong> 
+                                {' '} Item(s)
                             </h3>
                             <h5>
                                 ${cartItems.reduce(
@@ -130,11 +156,13 @@ function CartScreen({ match, location, history }) {
                         <ListGroup.Item>
                             <Button
                                 type="button"
-                                className="btn-block btn-info"
+                                className="btn-block btn-info btn-lg"
                                 disabled={cartItems.length === 0}
                                 onClick={checkoutHandler}
                             >
-                                Proceed To Checkout
+                                <span className="h6">
+                                    <strong>Proceed To Checkout</strong>
+                                </span>
                             </Button>
                         </ListGroup.Item>
                     </ListGroup>

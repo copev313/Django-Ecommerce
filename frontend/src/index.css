@@ -35,12 +35,13 @@ Footer {
 
 /* Darken the green `success` colored product titles in the Product Component & CartScreen */
 .product-title {
-    color: rgb(0, 175, 0);
+    color: rgb(0, 150, 0);
 }
 
 /* Fix spacing around Shopping Cart title */
 #shopping-cart-title {
-    font-size: 1.8rem;
+    font-size: 2.4rem;
+    font-weight: 500;
     padding: 1rem 0;
 }
 
