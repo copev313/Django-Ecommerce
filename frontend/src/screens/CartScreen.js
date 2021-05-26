@@ -42,8 +42,7 @@ function CartScreen({ match, location, history }) {
     return (
         <Row>
             <Col md={8}>
-                <h2 className="mt-2"
-                    id="shopping-cart-title">
+                <h2 className="mt-2"  id="shopping-cart-title">
                     Shopping Cart
                 </h2>
                 <br></br>
@@ -52,9 +51,7 @@ function CartScreen({ match, location, history }) {
                     
                     <Message variant="primary">
                         Your cart is empty. {' '}
-                        <Link   className=""
-                                to="/"
-                        >
+                        <Link to="/"  className="">
                             Continue browsing
                         </Link>
                     </Message>
@@ -66,17 +63,16 @@ function CartScreen({ match, location, history }) {
                             <ListGroup.Item key={item.product}>
                                 <Row>
                                     <Col md={2}>
-                                        <Image  src={item.image} 
-                                                alt={item.name}
-                                                fluid
-                                                rounded
+                                        <Image  
+                                            src={item.image} 
+                                            alt={item.name}
+                                            fluid
+                                            rounded
                                         />
                                     </Col>
 
                                     <Col md={3}>
-                                        <Link   to={`/product/${item.product}`}
-                                                className="product-title"
-                                        >
+                                        <Link to={`/product/${item.product}`}  className="product-title">
                                             {item.name}
                                         </Link>
                                     </Col>

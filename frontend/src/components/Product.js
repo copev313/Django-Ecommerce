@@ -15,7 +15,11 @@ function Product({ product }) {
 
             <Card.Body>
                 <Link to={`/product/${product._id}`}>
-                    <Card.Title as="div" className="product-title">
+                    <Card.Title 
+                        as="div"
+                        className="product-title"
+                        id="product-card-title"
+                    >
                         <strong>
                             {product.name}
                         </strong>

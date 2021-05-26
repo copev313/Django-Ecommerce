@@ -29,20 +29,26 @@ Footer {
 }
 
 /* Add some padding around the price in the Product Component */
-.product-card .price-space {
-    padding: 1rem 0;
+.price-space {
+    padding-top: 1rem;
 }
 
 /* Darken the green `success` colored product titles in the Product Component & CartScreen */
+/* Add standardized hieght space for all Product cards. (May need*/
+#product-card-title {
+    height: 4em;
+}
+
 .product-title {
     color: rgb(0, 150, 0);
 }
 
 /* Fix spacing around Shopping Cart title */
-#shopping-cart-title {
+#shopping-cart-title, #login-title {
     font-size: 2.4rem;
     font-weight: 500;
-    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 /*
@@ -51,4 +57,3 @@ Footer {
     padding: 0.5rem 0;
 }
 */
-
