@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap'
-import Rating from '../components/Rating'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
-import { listProductDetails } from '../actions/productActions'
+import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap';
+import Rating from '../components/Rating';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import { listProductDetails } from '../actions/productActions';
 
 
 function ProductScreen({ match, history }) {
@@ -21,37 +21,36 @@ function ProductScreen({ match, history }) {
     }, [dispatch, match])
 
     const addToCartHandler = () => {
-        history.push(`/cart/${match.params.id}?qty=${qty}`)
+        history.push( `/cart/${ match.params.id }?qty=${ qty }` )
     }
 
     return (
         <div>
-            <Link to="/" className="btn btn-dark my-4">
-                Go Back
-            </Link>
+            <Link to="/" className="btn btn-dark my-4">Go Back</Link>
 
             { loading ? <Loader />
-
-            : error ? ( <Message variant="danger">
-                            {error}
-                        </Message>
-            )
-
+                    : error ? ( <Message variant="danger">
+                                    { error }
+                                </Message>
+                    )
             : ( <Row>
                     <Col md={6}>
-                        <Image src={product.image} alt={product.name} fluid />
+                        <Image  src={ product.image }
+                                alt={ product.name }
+                                fluid 
+                        />
                     </Col>
 
                     <Col md={3}>
                         <ListGroup variant="flush">
                             <ListGroup.Item>
-                                <h3 class="fw-bold">{product.name}</h3>
+                                <h3 class="fw-bold">{ product.name }</h3>
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Rating value={product.rating}
-                                        text={`${product.numReviews}`}
-                                        color={"darkgreen"}
+                                <Rating value={ product.rating }
+                                        text={ `${ product.numReviews }` }
+                                        color={ "darkgreen" }
                                 />
                             </ListGroup.Item>
 
@@ -64,7 +63,7 @@ function ProductScreen({ match, history }) {
                             <ListGroup.Item>
                                 <ins id="description-title">Description</ins>: 
                                 <br></br>
-                                {product.description}
+                                { product.description }
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
@@ -76,7 +75,7 @@ function ProductScreen({ match, history }) {
                                     <Row>
                                         <Col>Price:</Col>
                                         <Col>
-                                            <strong>${product.price}</strong>
+                                            <strong>${ product.price }</strong>
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
@@ -85,7 +84,7 @@ function ProductScreen({ match, history }) {
                                     <Row>
                                         <Col>Status:</Col>
                                         <Col>
-                                            {(product.countInStock > 0) ? 
+                                            { (product.countInStock > 0) ? 
                                                 "In Stock" : "Out of Stock"
                                             }
                                         </Col>
@@ -93,18 +92,18 @@ function ProductScreen({ match, history }) {
                                 </ListGroup.Item>
 
                                 {/* Custom Quantity Dropdown based on number of items in the stores inventory */}
-                                {product.countInStock > 0 && (
+                                { product.countInStock > 0 && (
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>Quantity:</Col>
                                             <Col xs="auto" className="my-1">
                                                 <Form.Control
                                                     as="select"
-                                                    value={qty}
-                                                    onChange={(e) => setQty(e.target.value)}
+                                                    value={ qty }
+                                                    onChange={ (e) => setQty(e.target.value) }
                                                 >
                                                     {
-                                                        [...Array(product.countInStock).keys()].map((x) => (
+                                                        [...Array(product.countInStock).keys()].map( (x) => (
                                                             <option key={ x + 1 }  value={ x + 1 }>
                                                                 { x + 1 }
                                                             </option>
@@ -117,13 +116,13 @@ function ProductScreen({ match, history }) {
                                 )}
 
                                 <ListGroup.Item>
-                                    <Button className={`btn-block btn-lg 
-                                                        ${(product.countInStock === 0) ?
-                                                            'btn-secondary' : 'btn-info'}`
+                                    <Button className={ `btn-block btn-lg 
+                                                        ${ (product.countInStock === 0) ?
+                                                            "btn-secondary" : "btn-info" }`
                                                     }
-                                            disabled={product.countInStock === 0}
+                                            disabled={ product.countInStock === 0 }
                                             type="button"
-                                            onClick={addToCartHandler}
+                                            onClick={ addToCartHandler }
                                     >
                                         ADD TO CART
                                     </Button>
@@ -137,4 +136,5 @@ function ProductScreen({ match, history }) {
     )
 }
 
-export default ProductScreen
+
+export default ProductScreen;

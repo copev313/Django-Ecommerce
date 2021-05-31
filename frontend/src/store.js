@@ -5,6 +5,7 @@ import {  productListReducer,  productDetailsReducer } from './reducers/productR
 import { cartReducer } from './reducers/cartReducers';
 import { userLoginReducer } from './reducers/userReducers';
 
+
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
@@ -30,5 +31,6 @@ const middleware = [thunk]
 const store = createStore(reducer,  initialState, 
     composeWithDevTools(applyMiddleware(...middleware))
 )
+
 
 export default store;

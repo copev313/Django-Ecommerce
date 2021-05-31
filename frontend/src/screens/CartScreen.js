@@ -13,15 +13,15 @@ function CartScreen({ match, location, history }) {
 
     const dispatch = useDispatch()
 
-    const cart = useSelector(state => state.cart)
+    const cart = useSelector( state => state.cart )
     const { cartItems } = cart
 
 
-    useEffect(() => {
+    useEffect( () => {
         if (productId) {
             dispatch(addToCart(productId, qty))
         }
-    }, [dispatch, productId, qty])
+    }, [dispatch, productId, qty] )
 
     /*
     const continueShoppingHandler = () => {
@@ -36,59 +36,56 @@ function CartScreen({ match, location, history }) {
 
     const checkoutHandler = () => {
         // Redirect to shipping page:
-        history.push('/login?redirect=shipping')
+        history.push("/login?redirect=shipping")
     }
 
     return (
         <Row>
             <Col md={8}>
-                <h2 className="mt-2"  id="shopping-cart-title">
-                    Shopping Cart
-                </h2>
+                <h2 className="mt-2" id="shopping-cart-title">Shopping Cart</h2>
                 <br></br>
 
-                {cartItems.length === 0 ? (
-                    
+                { cartItems.length === 0 ? (
                     <Message variant="primary">
                         Your cart is empty. {' '}
                         <Link to="/"  className="">
                             Continue browsing
                         </Link>
                     </Message>
-
                 )
                 : (
                     <ListGroup variant="flush">
-                        {cartItems.map((item) => (
-                            <ListGroup.Item key={item.product}>
+                        { cartItems.map((item) => (
+                            <ListGroup.Item key={ item.product }>
                                 <Row>
                                     <Col md={2}>
                                         <Image  
-                                            src={item.image} 
-                                            alt={item.name}
+                                            src={ item.image }
+                                            alt={ item.name }
                                             fluid
                                             rounded
                                         />
                                     </Col>
 
                                     <Col md={3}>
-                                        <Link to={`/product/${item.product}`}  className="product-title">
-                                            {item.name}
+                                        <Link to={ `/product/${item.product}` }  className="product-title">
+                                            { item.name }
                                         </Link>
                                     </Col>
 
                                     <Col md={2}>
-                                        ${item.price}
+                                        ${ item.price }
                                     </Col>
 
                                     <Col md={3}>
                                         <Form.Control
                                             as="select"
-                                            value={item.qty}
-                                            onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
+                                            value={ item.qty }
+                                            onChange={ (e) => dispatch(
+                                                addToCart(item.product, Number(e.target.value))
+                                            )}
                                         >
-                                            {
-                                                [...Array(item.countInStock).keys()].map((x) => (
+                                            {   [...Array(item.countInStock).keys()].map( (x) => (
                                                     <option key={ x + 1 }  value={ x + 1 }>
                                                         { x + 1 }
                                                     </option>
@@ -101,8 +98,7 @@ function CartScreen({ match, location, history }) {
                                         <Button 
                                             type="button"
                                             variant="outline-secondary"
-                                            onClick={() => removeFromCartHandler(item.product) }
-
+                                            onClick={ () => removeFromCartHandler(item.product) }
                                         >
                                             <i className="fas fa-trash"></i>
                                         </Button>
@@ -116,7 +112,7 @@ function CartScreen({ match, location, history }) {
                                     <Button
                                         type="button"
                                         class="btn btn-outline-primary px-4"
-                                        onClick={() => history.push('/')}  // Redirect to home page
+                                        onClick={ () => history.push('/') }  // Redirect to home page
                                     >
                                         Continue Shopping
                                     </Button>
@@ -136,14 +132,14 @@ function CartScreen({ match, location, history }) {
                             <h3>
                                 Subtotal: {' '}
                                 <strong>
-                                    {cartItems.reduce(
+                                    { cartItems.reduce(
                                         (acc, item) =>  acc + item.qty, 0 )
                                     }
                                 </strong> 
                                 {' '} Item(s)
                             </h3>
                             <h5>
-                                ${cartItems.reduce(
+                                ${ cartItems.reduce(
                                     (acc, item) =>  acc + item.qty * item.price, 0 ).toFixed(2)
                                 }
                             </h5>
@@ -153,8 +149,8 @@ function CartScreen({ match, location, history }) {
                             <Button
                                 type="button"
                                 className="btn-block btn-info btn-lg"
-                                disabled={cartItems.length === 0}
-                                onClick={checkoutHandler}
+                                disabled={ cartItems.length === 0 }
+                                onClick={ checkoutHandler }
                             >
                                 <span className="h6">
                                     <strong>Proceed To Checkout</strong>
@@ -168,4 +164,5 @@ function CartScreen({ match, location, history }) {
     )
 }
 
-export default CartScreen
+
+export default CartScreen;
