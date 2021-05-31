@@ -1,8 +1,20 @@
 import React from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useDispatch, useSelector } from 'react-redux';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { logout } from '../actions/userActions';
 
 function Header() {
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch( logout() )
+        //console.log('Logout!')  // debugging!
+    }
+
     return (
         <header>
             <Navbar className="pt-3 pb-4"
@@ -32,19 +44,44 @@ function Header() {
                                 <Nav.Link className="text-right font-weight-light">
                                     <span className="h6">
                                         <i className="fas fa-shopping-cart"></i>{' '}
-                                        CART
+                                        <span className="">CART</span>
                                     </span>
                                 </Nav.Link>
                             </LinkContainer>
 
-                            <LinkContainer to="/login">
-                                <Nav.Link className="text-right font-weight-light ml-1">
-                                    <span className="h6">
-                                        <i className="fas fa-user"></i>{' '}
-                                        LOGIN
-                                    </span>
-                                </Nav.Link>
-                            </LinkContainer>
+                            {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
+                            { userInfo ? (
+                                <NavDropdown title={ userInfo.name }
+                                             className="h5"
+                                             id="username"
+                                >
+                                    <LinkContainer to="/profile">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-user-circle pr-1"></i>{' '}
+                                                PROFILE
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <NavDropdown.Item className="h6 mb-n1" onClick={ logoutHandler }>
+                                        <span className="h6">
+                                            <i class="fas fa-sign-out-alt pr-1"></i>{' '}
+                                            LOGOUT
+                                        </span>
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            ) :
+                            (
+                                <LinkContainer to="/login">
+                                    <Nav.Link className="text-right font-weight-light ml-1">
+                                        <span className="h6">
+                                            <i className="fas fa-user"></i>{' '}
+                                            LOGIN
+                                        </span>
+                                    </Nav.Link>
+                                </LinkContainer>
+                            )}
 
                         </Nav>
                     </Navbar.Collapse>
@@ -54,4 +91,5 @@ function Header() {
     )
 }
 
-export default Header
+
+export default Header;

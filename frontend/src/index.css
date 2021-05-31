@@ -51,6 +51,14 @@ Footer {
     padding-bottom: 1rem;
 }
 
+/* Make Username Dropdown Font Bigger / Same Size as CART Font */
+#username {
+    font-size: 0.8em;
+    
+}
+
+
+
 /*
 .h2 {
     font-size: 1.4rem;
