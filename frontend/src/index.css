@@ -53,8 +53,8 @@ Footer {
 
 /* Make Username Dropdown Font Bigger / Same Size as CART Font */
 #username {
-    font-size: 0.8em;
-    
+    font-size: 0.80em;
+    padding-top: 0.5em;
 }
 
 

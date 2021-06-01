@@ -42,9 +42,9 @@ function Header() {
 
                             <LinkContainer to="/cart">
                                 <Nav.Link className="text-right font-weight-light">
-                                    <span className="h6">
+                                    <span className="h6" >
                                         <i className="fas fa-shopping-cart"></i>{' '}
-                                        <span className="">CART</span>
+                                        CART
                                     </span>
                                 </Nav.Link>
                             </LinkContainer>
@@ -52,7 +52,7 @@ function Header() {
                             {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
                             { userInfo ? (
                                 <NavDropdown title={ userInfo.name }
-                                             className="h5"
+                                             className="h5 align-text-top pl-2"
                                              id="username"
                                 >
                                     <LinkContainer to="/profile">
