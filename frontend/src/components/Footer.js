@@ -1,7 +1,8 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Footer() {
+
     return (
         <div>
             <footer>
@@ -29,6 +30,7 @@ function Footer() {
                             <div></div>
                         </Col>
                     */}
+
                     </Row>
                 </Container>
             </footer>
@@ -36,4 +38,5 @@ function Footer() {
     )
 }
 
-export default Footer
+
+export default Footer;

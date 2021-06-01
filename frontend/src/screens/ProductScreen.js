@@ -11,18 +11,18 @@ import { listProductDetails } from '../actions/productActions';
 
 function ProductScreen({ match, history }) {
     const [qty, setQty] = useState(1)
-
     const dispatch = useDispatch()
-    const productDetails = useSelector(state => state.productDetails)
+    const productDetails = useSelector( state => state.productDetails )
     const { loading, error, product } = productDetails
 
-    useEffect(() => {
+    useEffect( () => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
 
     const addToCartHandler = () => {
         history.push( `/cart/${ match.params.id }?qty=${ qty }` )
     }
+
 
     return (
         <div>
