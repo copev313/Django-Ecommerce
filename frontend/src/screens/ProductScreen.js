@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
@@ -54,11 +53,6 @@ function ProductScreen({ match, history }) {
                                 />
                             </ListGroup.Item>
 
-                            {/* Didn't see the point in having the price listed twice.
-                            <ListGroup.Item>
-                                <ins>Price</ins>: ${product.price}
-                            </ListGroup.Item>
-                            */}
 
                             <ListGroup.Item>
                                 <ins id="description-title">Description</ins>: 
@@ -92,7 +86,7 @@ function ProductScreen({ match, history }) {
                                 </ListGroup.Item>
 
                                 {/* Custom Quantity Dropdown based on number of items in the stores inventory */}
-                                { product.countInStock > 0 && (
+                                { (product.countInStock > 0) && (
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>Quantity:</Col>

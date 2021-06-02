@@ -20,12 +20,10 @@ function CartScreen({ match, location, history }) {
         }
     }, [dispatch, productId, qty] )
 
-    /*
     const continueShoppingHandler = () => {
         // Redirect to home page:
         history.push('/')
     }
-    */
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -43,13 +41,14 @@ function CartScreen({ match, location, history }) {
                 <h2 className="mt-2" id="shopping-cart-title">Shopping Cart</h2>
                 <br></br>
 
-                { cartItems.length === 0 ? (
-                    <Message variant="primary">
-                        Your cart is empty. {' '}
-                        <Link to="/"  className="">
-                            Continue browsing
-                        </Link>
-                    </Message>
+                { (cartItems.length === 0) ? 
+                    (
+                        <Message variant="primary">
+                            Your cart is empty.
+                            <Link to="/"  className="pl-2">
+                                Continue browsing
+                            </Link>
+                        </Message>
                 )
                 : (
                     <ListGroup variant="flush">
@@ -104,13 +103,14 @@ function CartScreen({ match, location, history }) {
                                 </Row>
                             </ListGroup.Item>
                         ))}
+
                         <ListGroup.Item>
                             <Row>
                                 <Col md={6}>
                                     <Button
                                         type="button"
                                         class="btn btn-outline-primary px-4"
-                                        onClick={ () => history.push('/') }  // Redirect to home page
+                                        onClick={ continueShoppingHandler }
                                     >
                                         Continue Shopping
                                     </Button>
@@ -124,7 +124,7 @@ function CartScreen({ match, location, history }) {
             </Col>
 
             <Col md={4}>
-                <Card>
+                <Card className="mt-3">
                     <ListGroup variant="flush">
                         <ListGroup.Item>
                             <h3>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../actions/userActions';
+
 
 function Header() {
     const userLogin = useSelector(state => state.userLogin)
@@ -12,7 +13,6 @@ function Header() {
 
     const logoutHandler = () => {
         dispatch( logout() )
-        //console.log('Logout!')  // debugging!
     }
 
     return (
@@ -38,10 +38,10 @@ function Header() {
                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto col-md-4 mr-n2">
+                        <Nav className=" ml-auto col-md-4 mr-n2 pt-3">
 
-                            <LinkContainer to="/cart">
-                                <Nav.Link className="text-right font-weight-light">
+                            <LinkContainer to="/cart" className="">
+                                <Nav.Link className="ml-n2 text-right font-weight-light">
                                     <span className="h6" >
                                         <i className="fas fa-shopping-cart"></i>{' '}
                                         CART
@@ -52,7 +52,7 @@ function Header() {
                             {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
                             { userInfo ? (
                                 <NavDropdown title={ userInfo.name }
-                                             className="h5 align-text-top pl-2"
+                                             className="h5 align-text-top pl-4"
                                              id="username"
                                 >
                                     <LinkContainer to="/profile">
