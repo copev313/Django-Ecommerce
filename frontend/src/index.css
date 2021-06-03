@@ -51,17 +51,30 @@ Footer {
     padding-bottom: 1rem;
 }
 
+/* Profile Screen Titles */
+#user-profile-title, #my-orders-title {
+    font-size: 2rem;
+    font-weight: 400;
+    padding-top: 1.25rem;
+    padding-bottom: 1rem;
+}
 /* Make Username Dropdown Font Bigger / Same Size as CART Font */
-#username {
+#username-nav-dropdown {
     font-size: 0.80em;
     padding-top: 0.5em;
 }
 
-
-
-/*
-.h2 {
-    font-size: 1.4rem;
-    padding: 0.5rem 0;
+#cart-link-container {
+    min-width: fit-content;
 }
-*/
+
+
+
+/* Hover Effect for the Update Button on the Profile Screen */
+#update-btn {
+    border: none;
+}
+
+#update-btn:hover {
+    background-color: rgba(0, 145, 0, 0.8);
+}
