@@ -35,9 +35,11 @@ function RegisterScreen({ location, history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
+        // [CASE] Passwords DON'T match:
         if(password !== confirmPassword) {
             setMessage("Passwords do not match!")
         }
+        // [CASE] Passwords match:
         else {
             dispatch( register(name, email, password) )
         }
@@ -62,6 +64,8 @@ function RegisterScreen({ location, history }) {
                         required
                         type="name"
                         placeholder="Enter Name"
+                        className={ (name.length >= 2) ?
+                                "is-valid" : "is-invalid" }
                         value={ name }
                         onChange={ (e) => setName(e.target.value) }
                     >
@@ -81,6 +85,9 @@ function RegisterScreen({ location, history }) {
                         onChange={ (e) => setEmail(e.target.value) }
                     >
                     </Form.Control>
+                    <Form.Control.Feedback type="invalid">
+                        Must provide a valid email address.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="password">
@@ -96,6 +103,9 @@ function RegisterScreen({ location, history }) {
                         onChange={ (e) => setPassword(e.target.value) }
                     >
                     </Form.Control>
+                    <Form.Control.Feedback type="invalid">
+                        Required: Must be at least 8 characters long.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group controlId="passwordConfirm">
@@ -104,13 +114,16 @@ function RegisterScreen({ location, history }) {
                         required
                         type="password"
                         placeholder="Confirm Password"
-                        className={ confirmPassword ? (
+                        className={ (confirmPassword.length >= 8) ? (
                                         password === confirmPassword ? 
                                             "is-valid" : "is-invalid") : "" }
                         value={ confirmPassword }
                         onChange={ (e) => setConfirmPassword(e.target.value) }
                     >
                     </Form.Control>
+                    <Form.Control.Feedback type="invalid">
+                        Required: Must match password field.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Row>
