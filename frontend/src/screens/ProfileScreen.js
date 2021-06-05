@@ -56,8 +56,13 @@ function ProfileScreen({ history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
+        // [CASE] Password Doesn't Meet Length Requirement:
+        if(password.length < 8) {
+            setAlertVariant("danger")
+            setMessage("Password must contain at least 8 characters!")
+        }
         // [CASE] Passwords DON'T match:
-        if(password !== confirmPassword) {
+        else if(password !== confirmPassword) {
             setAlertVariant("danger")
             setMessage("Passwords do not match!")
         }

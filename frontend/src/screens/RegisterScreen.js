@@ -35,8 +35,11 @@ function RegisterScreen({ location, history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
+        if(password.length < 8) {
+            setMessage("Password must contain at least 8 characters.")
+        }
         // [CASE] Passwords DON'T match:
-        if(password !== confirmPassword) {
+        else if(password !== confirmPassword) {
             setMessage("Passwords do not match!")
         }
         // [CASE] Passwords match:
