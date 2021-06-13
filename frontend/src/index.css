@@ -44,7 +44,7 @@ Footer {
 }
 
 /* Fix spacing around Shopping Cart title */
-#shopping-cart-title, #login-title {
+#shopping-cart-title, #login-title, #shipping-screen-title {
     font-size: 2.4rem;
     font-weight: 500;
     padding-top: 1rem;

@@ -26,7 +26,6 @@ function LoginScreen({ location, history }) {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        //console.log('Submitted')  // debugging!
         dispatch( login(email, password) )
     }
 

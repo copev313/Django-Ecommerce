@@ -169,9 +169,7 @@ function ProfileScreen({ history }) {
                             className="btn btn-secondary ml-3 mt-3 mb-5 px-4"
                             id="update-btn"
                         >
-                            <span className="h6">
-                                <strong>Update</strong>
-                            </span>
+                            <span className="h6 font-weight-bold">Update</span>
                         </Button>
                     </Row>
                 </Form>

@@ -136,9 +136,7 @@ function RegisterScreen({ location, history }) {
                         className="btn btn-info ml-3 mt-2 px-3"
                         id="register-button"
                     >
-                        <span className="h6">
-                            <strong>Register</strong>
-                        </span>
+                        <span className="h6 font-weight-bold">Register</span>
                     </Button>
                 </Row>
             </Form>

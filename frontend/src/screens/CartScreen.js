@@ -150,8 +150,8 @@ function CartScreen({ match, location, history }) {
                                 disabled={ cartItems.length === 0 }
                                 onClick={ checkoutHandler }
                             >
-                                <span className="h6">
-                                    <strong>Proceed To Checkout</strong>
+                                <span className="h6 font-weight-bold">
+                                    Proceed To Checkout
                                 </span>
                             </Button>
                         </ListGroup.Item>
