@@ -86,7 +86,7 @@ function ShippingScreen({ history }) {
 
                 <Button
                     type='submit'
-                    variant='primary'
+                    variant='info'
                     className="mt-1 btn-info btn-lg"
                 >
                     <span className="h6 font-weight-bold">Continue</span>

@@ -44,7 +44,10 @@ Footer {
 }
 
 /* Fix spacing around Shopping Cart title */
-#shopping-cart-title, #login-title, #shipping-screen-title {
+#shopping-cart-title,
+#login-title,
+#shipping-screen-title,
+#payment-screen-title {
     font-size: 2.4rem;
     font-weight: 500;
     padding-top: 1rem;
@@ -52,7 +55,8 @@ Footer {
 }
 
 /* Profile Screen Titles */
-#user-profile-title, #my-orders-title {
+#user-profile-title,
+#my-orders-title {
     font-size: 2rem;
     font-weight: 400;
     padding-top: 1.25rem;
@@ -67,7 +71,6 @@ Footer {
 #cart-link-container {
     min-width: fit-content;
 }
-
 
 
 /* Hover Effect for the Update Button on the Profile Screen */
