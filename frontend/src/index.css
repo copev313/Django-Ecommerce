@@ -47,7 +47,8 @@ Footer {
 #shopping-cart-title,
 #login-title,
 #shipping-screen-title,
-#payment-screen-title {
+#payment-screen-title,
+#placeorder-screen-title {
     font-size: 2.4rem;
     font-weight: 500;
     padding-top: 1rem;
@@ -72,12 +73,6 @@ Footer {
     min-width: fit-content;
 }
 
-
-/* Hover Effect for the Update Button on the Profile Screen */
-#update-btn {
-    border: none;
-}
-
-#update-btn:hover {
-    background-color: rgba(0, 145, 0, 0.8);
+#continue-shopping-btn {
+    font-size: 0.7rem;
 }

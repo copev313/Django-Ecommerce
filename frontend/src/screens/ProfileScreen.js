@@ -165,8 +165,8 @@ function ProfileScreen({ history }) {
                     <Row>
                         <Button 
                             type="submit"
-                            variant="secondary"
-                            className="btn btn-secondary ml-3 mt-3 mb-5 px-4"
+                            variant="outline-secondary"
+                            className="btn btn-outline-secondary ml-3 mt-3 mb-5 px-4"
                             id="update-btn"
                         >
                             <span className="h6 font-weight-bold">Update</span>

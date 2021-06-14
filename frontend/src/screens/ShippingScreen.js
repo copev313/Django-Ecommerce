@@ -30,7 +30,7 @@ function ShippingScreen({ history }) {
             <CheckoutSteps step1 step2 />
 
             <h2 id="shipping-screen-title">Shipping</h2>
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={ submitHandler }>
 
                 <Form.Group controlId="address">
                     <Form.Label>Address</Form.Label>

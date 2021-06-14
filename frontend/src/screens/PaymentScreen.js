@@ -26,11 +26,8 @@ function PaymentScreen({ history }) {
     }
 
 
-
-
     return (
         <FormContainer>
-        
             <CheckoutSteps step1 step2 step3 />
 
             <h2 id="payment-screen-title"
@@ -64,9 +61,6 @@ function PaymentScreen({ history }) {
                     <span className="h6 font-weight-bold">Continue</span>
                 </Button>
             </Form>
-
-
-
 
         </FormContainer>
     )

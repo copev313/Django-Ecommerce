@@ -64,7 +64,7 @@ function CartScreen({ match, location, history }) {
                                         />
                                     </Col>
 
-                                    <Col md={3}>
+                                    <Col md={4}>
                                         <Link to={ `/product/${item.product}` }  className="product-title">
                                             { item.name }
                                         </Link>
@@ -74,7 +74,7 @@ function CartScreen({ match, location, history }) {
                                         ${ item.price }
                                     </Col>
 
-                                    <Col md={3}>
+                                    <Col md={2}>
                                         <Form.Control
                                             as="select"
                                             value={ item.qty }
@@ -109,10 +109,13 @@ function CartScreen({ match, location, history }) {
                                 <Col md={6}>
                                     <Button
                                         type="button"
+                                        variant="outline-primary"
                                         class="btn btn-outline-primary px-4"
                                         onClick={ continueShoppingHandler }
                                     >
-                                        Continue Shopping
+                                        <span className="font-weight-bold" id="continue-shopping-btn">
+                                            Continue Shopping
+                                        </span>
                                     </Button>
                                 </Col>
 
@@ -146,6 +149,7 @@ function CartScreen({ match, location, history }) {
                         <ListGroup.Item>
                             <Button
                                 type="button"
+                                variant="info"
                                 className="btn-block btn-info btn-lg"
                                 disabled={ cartItems.length === 0 }
                                 onClick={ checkoutHandler }
