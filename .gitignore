@@ -157,7 +157,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
+#db.sqlite3
 
 # IPython
 profile_default/
@@ -182,8 +182,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-
 
 ### CUSTOM STUFF ###
 /.vscode
