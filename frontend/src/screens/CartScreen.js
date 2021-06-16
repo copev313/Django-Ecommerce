@@ -105,7 +105,7 @@ function CartScreen({ match, location, history }) {
                         ))}
 
                         <ListGroup.Item>
-                            <Row>
+                            <Row className="mt-2">
                                 <Col md={6}>
                                     <Button
                                         type="button"
@@ -132,18 +132,18 @@ function CartScreen({ match, location, history }) {
                         <ListGroup.Item>
                             <h3>
                                 Subtotal: {' '}
-                                <strong>
-                                    { cartItems.reduce(
-                                        (acc, item) =>  acc + item.qty, 0 )
-                                    }
-                                </strong> 
+                                { cartItems.reduce(
+                                    (acc, item) =>  acc + item.qty, 0 )
+                                }
                                 {' '} Item(s)
                             </h3>
-                            <h5>
+                            <h4 className="mt-3 pl-1">
+                                <strong>
                                 ${ cartItems.reduce(
                                     (acc, item) =>  acc + item.qty * item.price, 0 ).toFixed(2)
                                 }
-                            </h5>
+                                </strong>
+                            </h4>
                         </ListGroup.Item>
 
                         <ListGroup.Item>
