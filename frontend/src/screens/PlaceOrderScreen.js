@@ -106,7 +106,7 @@ function PlaceOrderScreen({ history }) {
                                                 <Col className="pt-3">
                                                     <Link 
                                                         to={`/product/${item.product}`}
-                                                        className="product-title">
+                                                        class="custom-lime">
                                                         {item.name}
                                                     </Link>
                                                 </Col>
@@ -143,7 +143,12 @@ function PlaceOrderScreen({ history }) {
                                 <Row>
                                     <Col>Shipping:</Col>
                                     <Col>{ (cart.shippingPrice > 0) ?
-                                                '$'+cart.shippingPrice : 'FREE' }
+                                                    '$'+ cart.shippingPrice : (
+                                                        <span   className="text-primary"
+                                                                class="custom-lime">
+                                                            <strong>FREE</strong>
+                                                        </span>)
+                                            }
                                     </Col>
                                 </Row>
                             </ListGroup.Item>

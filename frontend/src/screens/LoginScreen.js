@@ -73,20 +73,19 @@ function LoginScreen({ location, history }) {
                             <strong>Login</strong>
                         </span>
                     </Button>
+
+                    <Col className="text-right pt-3 mr-3">
+                        New around these parts? 
+                        <Link 
+                            className="text-success pl-1"
+                            to={ redirect ? `/register?redirect=${redirect}` :
+                                            "/register" }>
+                            <ins><strong>Register!</strong></ins>
+                        </Link>
+                    </Col>
                 </Row>
             </Form>
 
-            <Row className="py-3">
-                <Col>
-                    New Here? 
-                    <Link 
-                        className="text-success pl-1"
-                        to={ redirect ? `/register?redirect=${redirect}` :
-                                        "/register" }>
-                        <ins>Register!</ins>
-                    </Link>
-                </Col>
-            </Row>
         </FormContainer>
     )
 }

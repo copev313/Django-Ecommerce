@@ -51,7 +51,7 @@ function RegisterScreen({ location, history }) {
 
     return (
         <FormContainer>
-            <h2 className="mt-2" id="login-title">Sign In</h2>
+            <h2 className="mt-2" id="login-title">Create an Account</h2>
             <br></br>
             {/* Handle Password Confirmation Message */}
             { message && <Message variant="danger">{ message }</Message>}
@@ -67,8 +67,9 @@ function RegisterScreen({ location, history }) {
                         required
                         type="name"
                         placeholder="Enter Name"
-                        className={ (name.length >= 2) ?
-                                "is-valid" : "is-invalid" }
+                        className={ name ? (
+                            name.length >= 2 ?
+                                "is-valid" : "is-invalid") : "" }
                         value={ name }
                         onChange={ (e) => setName(e.target.value) }
                     >
@@ -133,25 +134,24 @@ function RegisterScreen({ location, history }) {
                     <Button 
                         type="submit"
                         variant="info"
-                        className="btn btn-info ml-3 mt-2 px-3"
+                        className="btn btn-info ml-4 mt-2 px-3"
                         id="register-button"
                     >
                         <span className="h6 font-weight-bold">Register</span>
                     </Button>
+
+                    <Col className="text-right pt-3 mr-3">
+                        Already a member? 
+                        <Link 
+                            className="text-success pl-1"
+                            to={ redirect ? `/login?redirect=${redirect}` :
+                                            "/login" }>
+                            <ins><strong>Sign in!</strong></ins>
+                        </Link>
+                    </Col>
                 </Row>
             </Form>
 
-            <Row className="py-3">
-                <Col>
-                    Already a member? 
-                    <Link 
-                        className="text-success pl-1"
-                        to={ redirect ? `/login?redirect=${redirect}` :
-                                        "/login" }>
-                        <ins>Sign in!</ins>
-                    </Link>
-                </Col>
-            </Row>
         </FormContainer>
     )
 }
