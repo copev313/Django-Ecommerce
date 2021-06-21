@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { /*useState,*/ useEffect } from 'react';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +41,7 @@ function PlaceOrderScreen({ history }) {
             history.push(`/order/${order._id}`)
             dispatch({ type: ORDER_CREATE_RESET })
         }
-    }, [success, history])
+    }, [dispatch, success, history])
 
     const placeOrder = () => {
         dispatch( 
@@ -106,7 +106,7 @@ function PlaceOrderScreen({ history }) {
                                                 <Col className="pt-3">
                                                     <Link 
                                                         to={`/product/${item.product}`}
-                                                        class="custom-lime">
+                                                        className="custom-lime">
                                                         {item.name}
                                                     </Link>
                                                 </Col>
@@ -143,12 +143,11 @@ function PlaceOrderScreen({ history }) {
                                 <Row>
                                     <Col>Shipping:</Col>
                                     <Col>{ (cart.shippingPrice > 0) ?
-                                                    '$'+ cart.shippingPrice : (
-                                                        <span   className="text-primary"
-                                                                class="custom-lime">
-                                                            <strong>FREE</strong>
-                                                        </span>)
-                                            }
+                                            '$'+ cart.shippingPrice : (
+                                                <span   className="custom-lime">
+                                                    <strong>FREE</strong>
+                                                </span>
+                                        )}
                                     </Col>
                                 </Row>
                             </ListGroup.Item>

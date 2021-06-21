@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { /*Button,*/ Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { PayPalButton } from 'react-paypal-button-v2';
@@ -148,7 +148,7 @@ function OrderScreen({ match }) {
                                                     <Col className="pt-3">
                                                         <Link 
                                                             to={`/product/${item.product}`}
-                                                            class="custom-lime">
+                                                            className="custom-lime">
                                                             {item.name}
                                                         </Link>
                                                     </Col>
@@ -186,12 +186,11 @@ function OrderScreen({ match }) {
                                     <Row>
                                         <Col>Shipping:</Col>
                                         <Col>{ (order.shippingPrice > 0) ?
-                                                    '$'+ order.shippingPrice : (
-                                                        <span   className="text-primary"
-                                                                class="custom-lime">
-                                                            <strong>FREE</strong>
-                                                        </span>)
-                                            }
+                                                '$'+ order.shippingPrice : (
+                                                    <span className="custom-lime">
+                                                        <strong>FREE</strong>
+                                                    </span>
+                                            )}
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>

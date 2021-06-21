@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, /*useEffect*/ } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
@@ -38,7 +38,6 @@ function ShippingScreen({ history }) {
                         required
                         type="text"
                         placeholder="123 Mulberry Street"
-                        className=""
                         value={ address ? address : '' }
                         onChange={ (e) => setAddress(e.target.value) }
                     >
@@ -51,7 +50,6 @@ function ShippingScreen({ history }) {
                         required
                         type="text"
                         placeholder="Orlando, FL"
-                        className=""
                         value={ city ? city : '' }
                         onChange={ (e) => setCity(e.target.value) }
                     >
@@ -64,7 +62,6 @@ function ShippingScreen({ history }) {
                         required
                         type="text"
                         placeholder="32819"
-                        className=""
                         value={ postalCode ? postalCode : '' }
                         onChange={ (e) => setPostalCode(e.target.value) }
                     >
@@ -77,7 +74,6 @@ function ShippingScreen({ history }) {
                         required
                         type="text"
                         placeholder="United States"
-                        className=""
                         value={ country ? country : '' }
                         onChange={ (e) => setCountry(e.target.value) }
                     >
