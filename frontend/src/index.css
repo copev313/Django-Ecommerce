@@ -64,7 +64,8 @@ Footer {
 
 #user-profile-title,
 #my-orders-title,
-#admin-user-list-title {
+#admin-user-list-title,
+#edit-user-title {
     font-size: 2rem;
     font-weight: 400;
     padding-top: 1.25rem;
