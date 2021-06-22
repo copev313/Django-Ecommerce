@@ -71,13 +71,13 @@ function UserListScreen({ history }) {
                                         </td>
 
                                         <td>
-                                            <LinkContainer to={`/admin/user/${user._id}`}>
+                                            <LinkContainer to={`/admin/user/${user._id}/edit`}>
                                                 <Button variant="info" className="btn-sm mr-2">
                                                     <i className="fas fa-user-edit"></i>
                                                 </Button>
                                             </LinkContainer>
 
-                                            <Button variant="danger" className="btn-sm" onClick={() => deleteHandler(user._id)}>
+                                            <Button variant="danger" className="btn-sm" onClick={ () => deleteHandler(user._id)}>
                                                 <i className="fas fa-user-slash"></i>
                                             </Button>
                                         </td>

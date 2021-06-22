@@ -39,8 +39,9 @@ function ProfileScreen({ history }) {
         }
         // [CASE] User's logged in:
         else {
-            // [CASE] We have no user info loaded:
-            if (!user || !user.name || success) {
+            // [CASE] We have no user info loaded OR 
+            //          we're viewing details of a different user's account:
+            if (!user || !user.name || success || userInfo._id !== user._id) {
                 dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch( getUserDetails('profile') )
                 dispatch( listMyOrders() )
@@ -170,7 +171,7 @@ function ProfileScreen({ history }) {
                         <Button 
                             type="submit"
                             variant="outline-secondary"
-                            className="btn btn-outline-secondary ml-3 mt-3 mb-5 px-4"
+                            className="btn ml-3 mt-3 mb-5 px-4"
                             id="update-btn"
                         >
                             <span className="h6 font-weight-bold">Update</span>
@@ -206,22 +207,22 @@ function ProfileScreen({ history }) {
 
                             <tbody>
                                 { orders.map( order => (
-                                    <tr key={ order._id }>
-                                        <td>{ order._id }</td>
-                                        <td>{ order.createdAt.substring(0, 10) }</td>
-                                        <td>${ order.totalPrice }</td>
-                                        <td>{ order.isPaid ? order.paidAt.substring(0, 10) : (
-                                            <i  className="fas fa-times" style={{ color: 'red' }}></i>
+                                    <tr key={ order._id } >
+                                        <td className="pt-2 pl-2">{ order._id }</td>
+                                        <td className="pt-2">{ order.createdAt.substring(0, 10) }</td>
+                                        <td className="pt-2">${ order.totalPrice }</td>
+                                        <td className="pt-2">{ order.isPaid ? order.paidAt.substring(0, 10) : (
+                                            <i  className="fas fa-times pl-2" style={{ color: 'red' }}></i>
                                         )}
                                         </td>
-                                        <td>
+                                        <td className="pt-2">
                                             { order.isDelivered ? order.deliveredAt.substring(0, 10) :
                                                 <em>Not Delivered</em>
                                             }
                                         </td>
                                         <td>
                                             <LinkContainer to={`/order/${order._id}`}>
-                                                <Button className="btn-sm" variant="dark">
+                                                <Button className="btn-sm" variant="outline-dark">
                                                     Details
                                                 </Button>
                                             </LinkContainer>

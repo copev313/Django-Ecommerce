@@ -40,6 +40,16 @@ function OrderScreen({ match }) {
         document.body.appendChild(script)
     }
 
+    const formatTimestamp = (timestamp) => {
+        const date = timestamp.substring(0, 10)
+        const [year, month, day] = [date.substring(0, 4), date.substring(5,7), date.substring(8, 10)]
+        const dateFormatted = `${month}-${day}-${year}`
+        const time = timestamp.substring(11, 19)
+        const hours = Number(time.substring(0,2))
+        const hoursFormatted = (hours > 12) ? hours - 12 : hours
+        const timeFormatted = `${hoursFormatted}${time.substring(2)}`
+        return `${dateFormatted} @ ${timeFormatted} ${ (hours > 12) ? 'PM' : 'AM'} (UTC)`
+    }
 
     useEffect( () => {
         // [CASE] No order OR order id does not match:
@@ -101,7 +111,7 @@ function OrderScreen({ match }) {
                                     </span>
                                     <p></p>
                                     { order.isDelivered ? (
-                                            <Message variant="success"><strong>Delivered</strong> ({order.deliveredAt})</Message>
+                                            <Message variant="success"><strong>Delivered</strong> on { formatTimestamp(order.deliveredAt) }</Message>
                                     ) : (
                                             <Message variant="secondary"><strong>Not Delivered</strong></Message>
                                     )}
@@ -117,7 +127,7 @@ function OrderScreen({ match }) {
                                     </span>
                                 </p>
                                 { order.isPaid ? (
-                                        <Message variant="success"><strong>Paid</strong> on {order.paidAt}</Message>
+                                        <Message variant="success"><strong>Paid</strong> on { formatTimestamp(order.paidAt) }</Message>
                                 ) : (
                                         <Message variant="warning"><strong>Not Paid</strong></Message>
                                 )}
