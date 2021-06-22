@@ -215,6 +215,11 @@ function ProfileScreen({ history }) {
                                         )}
                                         </td>
                                         <td>
+                                            { order.isDelivered ? order.deliveredAt.substring(0, 10) :
+                                                <em>Not Delivered</em>
+                                            }
+                                        </td>
+                                        <td>
                                             <LinkContainer to={`/order/${order._id}`}>
                                                 <Button className="btn-sm" variant="dark">
                                                     Details
