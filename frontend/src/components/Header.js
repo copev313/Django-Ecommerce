@@ -121,9 +121,9 @@ function Header() {
                                 </NavDropdown>
                             )}
 
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Container>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
         </header>
     )
