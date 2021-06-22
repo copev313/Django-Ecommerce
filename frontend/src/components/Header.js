@@ -87,9 +87,43 @@ function Header() {
                                 </LinkContainer>
                             )}
 
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
+                            { userInfo && userInfo.isAdmin && (
+                                <NavDropdown    title="Admin"
+                                                className="h5 align-text-top"
+                                                id="admin-dropdown-menu"
+                                >
+                                    <LinkContainer to="/admin/userlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-users pr-1"></i>{' '}
+                                                Users
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/productlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-tags pr-1"></i>{' '}
+                                                Products
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/orderlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-hand-holding-usd pr-1"></i>{' '}
+                                                Orders
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
+                            )}
+
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
             </Navbar>
         </header>
     )

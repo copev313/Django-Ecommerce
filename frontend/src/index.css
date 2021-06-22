@@ -39,8 +39,13 @@ Footer {
     height: 4em;
 }
 
-.product-title {
-    color: rgb(0, 150, 0);
+.product-title,
+.custom-lime {
+    color: #009600;
+}
+
+.darkgreen {
+    color: darkgreen;
 }
 
 /* Fix spacing around Shopping Cart title */
@@ -48,23 +53,34 @@ Footer {
 #login-title,
 #shipping-screen-title,
 #payment-screen-title,
-#placeorder-screen-title {
+#placeorder-screen-title,
+#ordersummary-screen-title {
     font-size: 2.4rem;
     font-weight: 500;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
-/* Profile Screen Titles */
+
 #user-profile-title,
-#my-orders-title {
+#my-orders-title,
+#admin-user-list-title {
     font-size: 2rem;
     font-weight: 400;
     padding-top: 1.25rem;
     padding-bottom: 1rem;
 }
+
+
+#home-screen-latest-title {
+    font-size: 1.7rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1rem;
+}
+
 /* Make Username Dropdown Font Bigger / Same Size as CART Font */
-#username-nav-dropdown {
+#username-nav-dropdown,
+#admin-dropdown-menu {
     font-size: 0.80em;
     padding-top: 0.5em;
 }

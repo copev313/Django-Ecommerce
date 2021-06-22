@@ -17,7 +17,7 @@ function HomeScreen() {
 
     return (
         <div>
-            <h2 className="mt-5">Latest Products</h2>
+            <h2 id="home-screen-latest-title">Latest Products</h2>
             { loading ? (  <div>
                                 <br></br>
                                 <Loader />
