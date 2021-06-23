@@ -49,35 +49,38 @@ function UserListScreen({ history }) {
                         >
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>NAME</th>
-                                    <th>EMAIL</th>
-                                    <th>ADMIN</th>
-                                    <th></th>
+                                    <th className="pl-2">ID</th>
+                                    <th className="pl-2">NAME</th>
+                                    <th className="pl-2">EMAIL</th>
+                                    <th className="pl-2">ADMIN</th>
+                                    <th className="m-0 p-0"></th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 { users.map( user => (
                                     <tr key={ user._id }>
-                                        <td>{user._id}</td>
-                                        <td>{user.name}</td>
-                                        <td>{user.email}</td>
-                                        <td>{ user.isAdmin ? (
+                                        <td className="pt-3 pl-2">{ user._id }</td>
+                                        <td className="pt-3 pl-2">{ user.name }</td>
+                                        <td className="pt-3 pl-2">{ user.email }</td>
+                                        <td className="h4 pl-3 pt-2">{ user.isAdmin ? (
                                             <i className="fas fa-check" style={{ color: "#00CC00" }}></i>
                                         ) : (
                                             <i className="fas fa-times" style={{ color: "red" }}></i>
                                         )}
                                         </td>
 
-                                        <td>
-                                            <LinkContainer to={`/admin/user/${user._id}/edit`}>
-                                                <Button variant="info" className="btn-sm mr-2">
+                                        <td className="">
+                                            <LinkContainer to={`/admin/user/${ user._id }/edit`}>
+                                                <Button variant="info"
+                                                        className="btn-sm mx-2">
                                                     <i className="fas fa-user-edit"></i>
                                                 </Button>
                                             </LinkContainer>
 
-                                            <Button variant="danger" className="btn-sm" onClick={ () => deleteHandler(user._id)}>
+                                            <Button variant="danger"
+                                                    className="btn-sm mx-2"
+                                                    onClick={ () => deleteHandler(user._id) }>
                                                 <i className="fas fa-user-slash"></i>
                                             </Button>
                                         </td>
