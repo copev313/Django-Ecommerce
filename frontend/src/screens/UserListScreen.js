@@ -39,20 +39,20 @@ function UserListScreen({ history }) {
 
     return (
         <div>
-            <h2 id="admin-user-list-title">Users</h2>
+            <h1 className="my-4">Users</h1>
 
             { loading ? ( <Loader /> ) :
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
                     : (
-                        <Table  stripped bordered hover responsive
+                        <Table  striped bordered hover responsive
                                 className="table-sm"
                         >
-                            <thead>
+                            <thead className="thead-dark">
                                 <tr>
                                     <th className="pl-2">ID</th>
                                     <th className="pl-2">NAME</th>
                                     <th className="pl-2">EMAIL</th>
-                                    <th className="pl-2">ADMIN</th>
+                                    <th className="px-0 text-center">ADMIN</th>
                                     <th className="m-0 p-0"></th>
                                 </tr>
                             </thead>
@@ -63,23 +63,23 @@ function UserListScreen({ history }) {
                                         <td className="pt-3 pl-2">{ user._id }</td>
                                         <td className="pt-3 pl-2">{ user.name }</td>
                                         <td className="pt-3 pl-2">{ user.email }</td>
-                                        <td className="h4 pl-3 pt-2">{ user.isAdmin ? (
+                                        <td className="h4 pt-2 px-0 text-center">{ user.isAdmin ? (
                                             <i className="fas fa-check" style={{ color: "#00CC00" }}></i>
                                         ) : (
                                             <i className="fas fa-times" style={{ color: "red" }}></i>
                                         )}
                                         </td>
 
-                                        <td className="">
+                                        <td className="mx-0 text-center">
                                             <LinkContainer to={`/admin/user/${ user._id }/edit`}>
                                                 <Button variant="info"
-                                                        className="btn-sm mx-2">
+                                                        className="btn-sm mx-2 px-3 border border-dark">
                                                     <i className="fas fa-user-edit"></i>
                                                 </Button>
                                             </LinkContainer>
 
                                             <Button variant="danger"
-                                                    className="btn-sm mx-2"
+                                                    className="btn-sm mx-2 px-3 border border-dark"
                                                     onClick={ () => deleteHandler(user._id) }>
                                                 <i className="fas fa-user-slash"></i>
                                             </Button>
