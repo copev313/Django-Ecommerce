@@ -93,6 +93,7 @@ function ProductScreen({ match, history }) {
                                             <Col xs="auto" className="my-1">
                                                 <Form.Control
                                                     as="select"
+                                                    className="mr-4 pr-4"
                                                     value={ qty }
                                                     onChange={ (e) => setQty(e.target.value) }
                                                 >
