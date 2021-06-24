@@ -4,7 +4,12 @@ import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { listProducts, deleteProduct } from '../actions/productActions';
+import {
+    listProducts,
+    deleteProduct,
+    createProduct 
+} from '../actions/productActions';
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 
 function ProductListScreen({ history , match }) {
@@ -15,21 +20,42 @@ function ProductListScreen({ history , match }) {
     const { loading, error, products } = productList
 
     const productDelete = useSelector( state => state.productDelete )
-    const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
+    const {
+        loading: loadingDelete,
+        error: errorDelete,
+        success: successDelete
+    } = productDelete
+
+    const productCreate = useSelector( state => state.productCreate )
+    const {
+        loading: loadingCreate,
+        error: errorCreate,
+        success: successCreate,
+        product: createdProduct
+    } = productCreate
 
     const userLogin = useSelector( state => state.userLogin )
     const { userInfo } = userLogin
 
 
     useEffect( () => {
-        // [CASE] User is Admin:
-        if (userInfo && userInfo.isAdmin) {
-            dispatch(listProducts())
-        } else {
+
+        dispatch({ type: PRODUCT_CREATE_RESET })
+
+        // [CASE] User is NOT Admin:
+        if (!userInfo.isAdmin) {
             history.push('/login')
         }
-        
-    }, [dispatch, history, userInfo, successDelete])
+        // [CASE] Product was created:
+        if (successCreate) {
+            history.push(`/admin/product/${createdProduct._id}/edit`)
+        }
+        // [CASE] A new product was not created:
+        else {
+            dispatch( listProducts() )
+        }
+
+    }, [dispatch, history, userInfo, successDelete, successCreate])
 
     const deleteProductHandler = (id) => {
         // Confirmation Message:
@@ -38,8 +64,8 @@ function ProductListScreen({ history , match }) {
         }
     }
 
-    const createProductHandler = (product) => {
-        // Create product 
+    const createProductHandler = () => {
+        dispatch( createProduct() )
     }
 
     return (
@@ -49,7 +75,7 @@ function ProductListScreen({ history , match }) {
                     <h1 className="my-4">Products</h1>
                 </Col>
                 <Col className="text-right">
-                    <Button className="my-3 mt-3 mr-2 py-2" onclick={ createProductHandler } variant="info">
+                    <Button className="my-3 mt-3 mr-2 py-2" onClick={ createProductHandler } variant="info">
                         <i className=" fas fa-plus"></i>
                         <span className="pl-2 h6">
                             <strong>Create Product</strong>
@@ -61,13 +87,16 @@ function ProductListScreen({ history , match }) {
             { loadingDelete && <Loader /> }
             { errorDelete && <Message variant="danger">{ errorDelete }</Message> }
 
+            { loadingCreate && <Loader /> }
+            { errorCreate && <Message variant="danger">{ errorCreate }</Message> }
+
             { loading ? ( <Loader /> ) :
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
                     : (
-                        <Table  stripped bordered hover responsive
+                        <Table  bordered hover responsive
                                 className="table table-sm"
                         >
-                            <thead>
+                            <thead className="thead-light">
                                 <tr>
                                     <th className="pl-2">ID</th>
                                     <th className="pl-2">NAME</th>
@@ -87,16 +116,16 @@ function ProductListScreen({ history , match }) {
                                         <td className="pt-3 pl-2">{ product.category }</td>
                                         <td className="pt-3 pl-2">{ product.brand }</td>
 
-                                        <td className="">
+                                        <td className="mx-0 text-center">
                                             <LinkContainer to={`/admin/product/${ product._id }/edit`}>
-                                                <Button variant="primary"
+                                                <Button variant="outline-primary"
                                                         className="btn-sm mx-2 px-3">
                                                     <i className="fas fa-edit"></i>
                                                 </Button>
                                             </LinkContainer>
 
-                                            <Button variant="danger"
-                                                    className="btn-sm mx-2 px-3"
+                                            <Button variant="outline-danger"
+                                                    className="btn-sm px-3"
                                                     onClick={ () => deleteProductHandler(product._id) }>
                                                 <i className="far fa-trash-alt"></i>
                                             </Button>
