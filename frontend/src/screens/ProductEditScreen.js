@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { axios } from 'axios';
+import axios  from 'axios';
 import { Link } from 'react-router-dom';
 import { Form, Button, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,6 +57,7 @@ function ProductEditScreen({ match, history }) {
         }
     }, [dispatch, product, productId, history, successUpdate])
 
+
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch( updateProduct({
@@ -70,6 +71,7 @@ function ProductEditScreen({ match, history }) {
             description
         }))
     }
+
 
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
@@ -88,7 +90,6 @@ function ProductEditScreen({ match, history }) {
             }
 
             const { data } = await axios.post('/api/products/upload/', formData, config)
-
             setImage(data)
             setUploading(false)
         }
