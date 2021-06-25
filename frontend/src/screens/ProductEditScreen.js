@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import FormContainer from '../components/FormContainer';
-import { listProductDetails } from '../actions/productActions';
+import { listProductDetails, updateProduct } from '../actions/productActions';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 
 function ProductEditScreen({ match, history }) {
@@ -22,26 +23,49 @@ function ProductEditScreen({ match, history }) {
 
     const dispatch = useDispatch()
 
-    const productDetails = useSelector(state => state.productDetails)
+    const productDetails = useSelector( state => state.productDetails )
     const { error, loading, product } = productDetails
 
+    const productUpdate = useSelector( state => state.productUpdate )
+    const {
+        error: errorUpdate,
+        loading: loadingUpdate,
+        success: successUpdate
+    } = productUpdate
+
     useEffect( () => {
-        if (!product.name || product._id !== Number(productId)) {
-                dispatch( listProductDetails(productId) )
+
+        if (successUpdate) {
+            dispatch({ type: PRODUCT_UPDATE_RESET })
+            history.push('/admin/productlist')
         } else {
-            setName(product.name)
-            setPrice(product.price)
-            setImage(product.image)
-            setBrand(product.brand)
-            setCategory(product.category)
-            setCountInStock(product.countInStock)
-            setDescription(product.description)
+            if (!product.name || product._id !== Number(productId)) {
+                dispatch( listProductDetails(productId) )
+            }
+            else {
+                setName(product.name)
+                setPrice(product.price)
+                setImage(product.image)
+                setBrand(product.brand)
+                setCategory(product.category)
+                setCountInStock(product.countInStock)
+                setDescription(product.description)
+            }
         }
-    }, [dispatch, product, productId, history])
+    }, [dispatch, product, productId, history, successUpdate])
 
     const submitHandler = (e) => {
         e.preventDefault()
-        // Update product
+        dispatch( updateProduct({
+            _id: productId,
+            name,
+            price,
+            image,
+            brand,
+            category,
+            countInStock,
+            description
+        }))
     }
 
 
@@ -53,6 +77,9 @@ function ProductEditScreen({ match, history }) {
 
                 <FormContainer>
                     <h2 className="m-0 p-0" id="edit-user-title">Edit Product</h2>
+
+                    { loadingUpdate && <Loader /> }
+                    { errorUpdate && <Message variant="danger">{ errorUpdate }</Message>}
 
                     { loading ? ( <Loader /> ) :
                         error ? ( <Message variant="danger">{ error }</Message> 
@@ -162,6 +189,7 @@ function ProductEditScreen({ match, history }) {
                                         type="submit"
                                         variant="success"
                                         className="btn ml-4 mt-2 px-3"
+                                        onClick={ submitHandler }
                                     >
                                         <span className="h6">
                                             <strong>Save</strong>
