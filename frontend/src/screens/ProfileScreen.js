@@ -88,7 +88,9 @@ function ProfileScreen({ history }) {
     return (
         <Row>
             <Col md={4}>
-                <h2 id="user-profile-title">User Profile</h2>
+                <h2 id="user-profile-title">
+                    <ins>User Profile</ins>
+                </h2>
 
                 {/* Handle Password Confirmation Message & Successful Profile Updates*/}
                 { message && alertVariant === 'danger' && 
@@ -170,11 +172,13 @@ function ProfileScreen({ history }) {
                     <Row>
                         <Button 
                             type="submit"
-                            variant="outline-secondary"
+                            variant="outline-dark"
                             className="btn ml-3 mt-3 mb-5 px-4"
                             id="update-btn"
                         >
-                            <span className="h6 font-weight-bold">Update</span>
+                            <span className="h6">
+                                <strong>Update</strong>
+                            </span>
                         </Button>
                     </Row>
                 </Form>
@@ -187,7 +191,9 @@ function ProfileScreen({ history }) {
             <Col md={1}></Col>
 
             <Col md={7}>
-                <h2 id="my-orders-title">My Orders</h2>
+                <h2 id="my-orders-title">
+                    <ins>My Orders</ins>
+                </h2>
 
                 { loadingOrders ? ( <Loader /> ) : 
                     errorOrders ? (

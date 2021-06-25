@@ -110,11 +110,11 @@ function CartScreen({ match, location, history }) {
                                     <Button
                                         type="button"
                                         variant="outline-primary"
-                                        class="btn btn-outline-primary px-4"
+                                        class="btn btn-outline-primary px-3 py-2"
                                         onClick={ continueShoppingHandler }
                                     >
-                                        <span className="font-weight-bold" id="continue-shopping-btn">
-                                            Continue Shopping
+                                        <span id="continue-shopping-btn">
+                                            <strong>Continue Shopping</strong>
                                         </span>
                                     </Button>
                                 </Col>
@@ -154,8 +154,8 @@ function CartScreen({ match, location, history }) {
                                 disabled={ cartItems.length === 0 }
                                 onClick={ checkoutHandler }
                             >
-                                <span className="h6 font-weight-bold">
-                                    Proceed To Checkout
+                                <span className="h6">
+                                    <strong>Proceed To Checkout</strong>
                                 </span>
                             </Button>
                         </ListGroup.Item>
