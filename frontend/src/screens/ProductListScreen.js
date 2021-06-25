@@ -55,7 +55,7 @@ function ProductListScreen({ history , match }) {
             dispatch( listProducts() )
         }
 
-    }, [dispatch, history, userInfo, successDelete, successCreate])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
 
     const deleteProductHandler = (id) => {
         // Confirmation Message:
