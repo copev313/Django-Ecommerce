@@ -73,6 +73,10 @@ Footer {
     padding-bottom: 1rem;
 }
 
+.admin-title {
+    font-weight: 500;
+}
+
 
 #home-screen-latest-title {
     font-size: 1.7rem;

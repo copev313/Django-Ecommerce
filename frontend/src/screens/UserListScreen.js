@@ -39,7 +39,7 @@ function UserListScreen({ history }) {
 
     return (
         <div>
-            <h1 className="my-4">Users</h1>
+            <h1 className="my-4 admin-title">Users</h1>
 
             { loading ? ( <Loader /> ) :
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
