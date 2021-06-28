@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< Updated upstream
 import axios  from 'axios';
+=======
+>>>>>>> Stashed changes
 import { Link } from 'react-router-dom';
 import { Form, Button, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
-import GrowingLoader from '../components/GrowingLoader';
 import Message from '../components/Message';
 import FormContainer from '../components/FormContainer';
 import { listProductDetails, updateProduct } from '../actions/productActions';
@@ -22,7 +24,6 @@ function ProductEditScreen({ match, history }) {
     const [category, setCategory] = useState('')
     const [countInStock, setCountInStock] = useState(0)
     const [description, setDescription] = useState('')
-    const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -72,6 +73,7 @@ function ProductEditScreen({ match, history }) {
         }))
     }
 
+<<<<<<< Updated upstream
 
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0]
@@ -98,6 +100,8 @@ function ProductEditScreen({ match, history }) {
         }
     }
 
+=======
+>>>>>>> Stashed changes
 
     return ( 
             <div>
@@ -156,17 +160,6 @@ function ProductEditScreen({ match, history }) {
                                         onChange={ (e) => setImage(e.target.value) }
                                     >
                                     </Form.Control>
-
-                                    <Form.File
-                                        id="image-file"
-                                        label="Choose File"
-                                        custom
-                                        onChange={ uploadFileHandler }
-                                    >
-                                    </Form.File>
-
-                                    { uploading && <GrowingLoader /> }
-
                                 </Form.Group>
 
                                 <Form.Group controlId="category" className="mt-4">
