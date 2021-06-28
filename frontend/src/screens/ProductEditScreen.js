@@ -119,7 +119,7 @@ function ProductEditScreen({ match, history }) {
                                     <Form.Control
                                         type="name"
                                         placeholder="Enter name"
-                                        className={ name ? "is-valid" : "is-invalid" }
+                                        className={ name ? "" : "is-invalid" }
                                         value={ name }
                                         onChange={ (e) => setName(e.target.value) }
                                     >
@@ -135,13 +135,13 @@ function ProductEditScreen({ match, history }) {
                                     <Form.Control
                                         type="number"
                                         placeholder="Enter price"
-                                        className={ price >= 0 ? "is-valid" : "is-invalid" }
+                                        className={ price >= 0 ? "" : "is-invalid" }
                                         value={ price }
                                         onChange={ (e) => setPrice(e.target.value) }
                                     >
                                     </Form.Control>
                                     <Form.Control.Feedback type="invalid">
-                                        A valid price is required.
+                                        A positive price value is required.
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
@@ -173,7 +173,7 @@ function ProductEditScreen({ match, history }) {
                                     <Form.Control
                                         type="text"
                                         placeholder="Enter category"
-                                        className={ category ? "is-valid" : "is-invalid" }
+                                        className={ category ? "" : "is-invalid" }
                                         value={ category }
                                         onChange={ (e) => setCategory(e.target.value) }
                                     >
@@ -201,7 +201,7 @@ function ProductEditScreen({ match, history }) {
                                     <Form.Control
                                         type="number"
                                         placeholder="Enter stock level"
-                                        className={ countInStock >= 0 ? "is-valid" : "is-invalid" }
+                                        className={ countInStock >= 0 ? "" : "is-invalid" }
                                         value={ countInStock }
                                         onChange={ (e) => setCountInStock(e.target.value) }
                                     >

@@ -3,3 +3,5 @@
 
 ### Ideas for Improvement:
  - Add 'isShipped' & 'shippedAt' properties to Orders
+ - Make hamburger menu responsive.
+

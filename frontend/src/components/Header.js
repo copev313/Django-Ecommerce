@@ -42,11 +42,11 @@ function Header() {
                     
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto col-md-4 mr-n2 pt-3" id="right-side-nav">
+                        <Nav className="ml-auto col-md-4 pt-3 text-right" id="right-side-nav">
 
                             <LinkContainer to="/cart" id="cart-link-container">
-                                <Nav.Link className="ml-n2 text-right font-weight-light">
-                                    <span className="h6" >
+                                <Nav.Link className="ml-n2">
+                                    <span className="h6">
                                         <i className="fas fa-shopping-cart"></i>{' '}
                                         CART
                                     </span>
@@ -56,7 +56,7 @@ function Header() {
                             {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
                             { userInfo ? (
                                 <NavDropdown title={ usernameTruncate(userInfo.name, 12) }
-                                            className="h5 align-text-top px-4"
+                                            className="h5"
                                             id="username-nav-dropdown"
                                 >
                                     <LinkContainer to="/profile">
@@ -89,7 +89,7 @@ function Header() {
 
                             { userInfo && userInfo.isAdmin && (
                                 <NavDropdown    title="Admin"
-                                                className="h5 align-text-top"
+                                                className="h5"
                                                 id="admin-dropdown-menu"
                                 >
                                     <LinkContainer to="/admin/userlist">
