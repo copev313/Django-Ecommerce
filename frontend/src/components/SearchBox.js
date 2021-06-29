@@ -29,7 +29,7 @@ function SearchBox() {
         >
             <Form.Control
                 type="text"
-                placeholder="Find products and brands"
+                placeholder="Find products and stuff..."
                 name="q"
                 onChange={(e) => setKeyword(e.target.value)}
                 className="mr-3 pr-5"
