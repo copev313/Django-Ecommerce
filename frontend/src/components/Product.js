@@ -29,7 +29,10 @@ function Product({ product }) {
                 <Card.Text>
                     <div className="my-1">
                         <Rating value={ product.rating }
-                                text={ `${ product.numReviews } reviews` }
+                                text={ (product.numReviews === 1) ? ( `${product.numReviews} review`
+                                    ) : ( 
+                                        `${product.numReviews} reviews`
+                                    )}
                                 color={ "darkgreen" } 
                         />
                     </div>

@@ -51,9 +51,10 @@ function Rating({value, text, color}) {
                 </i>
             </span>
 
-            <span className="text-secondary">
-                {' '} ({ text && text })
-            </span>
+            { text ? ( <span className="text-secondary">
+                        {` (${ text }) `}
+                    </span> ) : ""
+            }
         </div>
     )
 }
