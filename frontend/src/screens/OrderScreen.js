@@ -77,7 +77,7 @@ function OrderScreen({ history, match }) {
                 setSdkReady(true)
             }
         }
-    }, [dispatch, order, orderId, successPay, successDeliver])
+    }, [dispatch, history, order, orderId, successPay, successDeliver, userInfo])
 
 
     const successPaymentHandler = (paymentResult) => {
