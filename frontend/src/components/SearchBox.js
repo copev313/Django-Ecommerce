@@ -12,7 +12,7 @@ function SearchBox() {
     const submitHandler = (e) => {
         e.preventDefault()
         if (keyword) {
-            history.push(`/?keyword=${keyword}`)
+            history.push(`/?keyword=${keyword}&page=1`)
         }
         else {
             history.push(
@@ -29,12 +29,11 @@ function SearchBox() {
         >
             <Form.Control
                 type="text"
+                placeholder="Find products and brands"
                 name="q"
                 onChange={(e) => setKeyword(e.target.value)}
                 className="mr-3 pr-5"
-            >
-
-            </Form.Control>
+            ></Form.Control>
 
             <Button
                 type="submit"

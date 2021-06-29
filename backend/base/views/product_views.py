@@ -3,6 +3,7 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import Product, Review
 from base.serializers import ProductSerializer
@@ -10,17 +11,40 @@ from base.serializers import ProductSerializer
 from rest_framework import status
 
 
-# GET -- all products:
+# GET -- all products / all products that fit search params:
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
     if (query == None):
         query = ''
-    
+
     # Case insensitive product name search:
     products = Product.objects.filter(name__icontains=query)
+
+    # Handle pagination:
+    NUM_PER_PAGE = 4
+    page = query = request.query_params.get('page')
+    paginator = Paginator(products, NUM_PER_PAGE)
+
+    try:
+        products = paginator.page(page)
+
+    # [CASE] Page query param not passed in --> Go to first page:
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    # [CHECK] Make sure page is handled:
+    if (page == None):
+        page = 1
+
+    page = int(page)
+    
     serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
+    return Response({'products': serializer.data,
+                     'page': page,
+                     'pages': paginator.num_pages})
 
 
 # GET -- product by id/primary key:

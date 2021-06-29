@@ -4,6 +4,7 @@ import { Table, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import Paginate from '../components/Paginate';
 import {
     listProducts,
     deleteProduct,
@@ -17,7 +18,13 @@ function ProductListScreen({ history , match }) {
     const dispatch = useDispatch()
 
     const productList = useSelector( state => state.productList )
-    const { loading, error, products } = productList
+    const {
+        loading,
+        error,
+        products,
+        pages,
+        page
+    } = productList
 
     const productDelete = useSelector( state => state.productDelete )
     const {
@@ -37,6 +44,8 @@ function ProductListScreen({ history , match }) {
     const userLogin = useSelector( state => state.userLogin )
     const { userInfo } = userLogin
 
+    let keyword = history.location.search
+
 
     useEffect( () => {
 
@@ -52,10 +61,11 @@ function ProductListScreen({ history , match }) {
         }
         // [CASE] A new product was not created:
         else {
-            dispatch( listProducts() )
+            dispatch( listProducts(keyword) )
         }
 
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
+    }, [dispatch, history, userInfo, successDelete,
+        successCreate, createdProduct, keyword])
 
     const deleteProductHandler = (id) => {
         // Confirmation Message:
@@ -93,6 +103,7 @@ function ProductListScreen({ history , match }) {
             { loading ? ( <Loader /> ) :
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
                     : (
+                        <div>
                         <Table  bordered hover responsive
                                 className="table table-sm"
                         >
@@ -134,6 +145,9 @@ function ProductListScreen({ history , match }) {
                                 ))}
                             </tbody>
                         </Table>
+
+                        <Paginate pages={pages} page={page} isAdmin={true} />
+                        </div>
                     )
             }
         </div>

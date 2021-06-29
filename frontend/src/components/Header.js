@@ -53,7 +53,7 @@ function Header() {
                                 <Nav.Link className="ml-n2">
                                     <span className="h6">
                                         <i className="fas fa-shopping-cart"></i>{' '}
-                                        CART
+                                        <span className="fw-500">CART</span>
                                     </span>
                                 </Nav.Link>
                             </LinkContainer>
