@@ -55,9 +55,10 @@ function Header() {
 
                             {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
                             { userInfo ? (
-                                <NavDropdown title={ usernameTruncate(userInfo.name, 12) }
-                                            className="h5"
-                                            id="username-nav-dropdown"
+                                <NavDropdown 
+                                    title={ usernameTruncate(userInfo.name, 12) }
+                                    className="h5"
+                                    id="username-nav-dropdown"
                                 >
                                     <LinkContainer to="/profile">
                                         <NavDropdown.Item>
