@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 
-from base.models import Product
+from base.models import Product, Review
 from base.serializers import ProductSerializer
 
 from rest_framework import status
@@ -73,7 +73,9 @@ def deleteProduct(request, pk):
     return Response("Product has been deleted")
 
 
+# POST -- upload a product image:
 @api_view(['POST'])
+@permission_classes([IsAdminUser])
 def uploadImage(request):
     data = request.data
     product_id = data['product_id']
@@ -82,4 +84,45 @@ def uploadImage(request):
     product.image = request.FILES.get('image')
     product.save()
     return Response("Image was uploaded successfully")
-    
+
+
+# POST - create a product review:
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def createProductReview(request, pk):
+    user = request.user
+    product = Product.objects.get(_id=pk)
+    data = request.data
+
+    # [CASE] Review already exists by this user:
+    already_exists = product.review_set.filter(user=user).exists()
+
+    if already_exists:
+        message = {'detail': "Product already reviewed"}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+    # [CASE] No Rating was provided -> Return a response:
+    elif (data['rating'] == 0):
+        message = {'detail': "Please select a rating"}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+    # [CASE] Create Review:
+    else:
+        Review.objects.create(
+            user=user,
+            product=product,
+            name=user.first_name,
+            rating=data['rating'],
+            comment=data['comment'],
+        )
+
+        reviews = product.review_set.all()
+        product.numReviews = len(reviews)
+
+        total = 0
+        for rev in reviews:
+            total += rev.rating
+
+        product.rating = total / len(reviews)
+        product.save()
+        return Response("Review added")
