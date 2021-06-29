@@ -47,6 +47,21 @@ def getProducts(request):
                      'pages': paginator.num_pages})
 
 
+# GET -- retreive featured products for the home screen carousel:
+@api_view(['GET'])
+def getFeaturedProducts(request):
+    # Maximum number of products allowed in the carousel:
+    MAX_PRODUCTS = 10
+
+    # Filter by featured products & order highest to lowest by rating:
+    featured_products = Product.objects.filter(
+        featured = True).order_by('-rating')[0:MAX_PRODUCTS]
+
+
+    serializer = ProductSerializer(featured_products, many=True)
+    return Response(serializer.data)
+
+
 # GET -- product by id/primary key:
 @api_view(['GET'])
 def getProduct(request, pk):
