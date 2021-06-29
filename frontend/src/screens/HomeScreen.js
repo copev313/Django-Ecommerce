@@ -7,12 +7,17 @@ import Message from '../components/Message';
 import { listProducts } from '../actions/productActions';
 
 
-function HomeScreen() {
+function HomeScreen({ history }) {
     const productList = useSelector( state => state.productList )
     const { error, loading, products } = productList
     const dispatch = useDispatch()
 
-    useEffect( () => { dispatch(listProducts()) }, [dispatch] )
+    let keyword = history.location.search
+
+    useEffect(() => { 
+        dispatch(listProducts(keyword)) 
+
+    }, [dispatch, keyword] )
 
 
     return (
