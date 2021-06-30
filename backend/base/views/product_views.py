@@ -14,9 +14,12 @@ from rest_framework import status
 # GET -- all products / all products that fit search params:
 @api_view(['GET'])
 def getProducts(request):
+    # Grab the 'keyword' query params:
     query = request.query_params.get('keyword')
-    if (query == None):
+
+    if query is None:
         query = ''
+
 
     # Case insensitive product name search:
     products = Product.objects.filter(name__icontains=query)
@@ -36,11 +39,10 @@ def getProducts(request):
         products = paginator.page(paginator.num_pages)
 
     # [CHECK] Make sure page is handled:
-    if (page == None):
+    if page is None:
         page = 1
-
     page = int(page)
-    
+
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data,
                      'page': page,
@@ -54,11 +56,10 @@ def getFeaturedProducts(request):
     MAX_PRODUCTS = 10
 
     # Filter by featured products & order highest to lowest by rating:
-    featured_products = Product.objects.filter(
-        featured = True).order_by('-rating')[0:MAX_PRODUCTS]
+    featured_products = Product.objects.filter(featured=True).order_by('-rating')
+    products = featured_products[0:MAX_PRODUCTS]
 
-
-    serializer = ProductSerializer(featured_products, many=True)
+    serializer = ProductSerializer(products, many=True)
     return Response(serializer.data)
 
 
