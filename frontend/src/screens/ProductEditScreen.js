@@ -229,7 +229,6 @@ function ProductEditScreen({ match, history }) {
                                         type="submit"
                                         variant="success"
                                         className="btn ml-4 mt-2 px-3"
-                                        onClick={ submitHandler }
                                     >
                                         <span className="h6">
                                             <strong>Save</strong>
@@ -237,8 +236,8 @@ function ProductEditScreen({ match, history }) {
                                     </Button>
                                 </Row>
                             </Form>
-                    )
-                }
+                        )
+                    }
                 </FormContainer>
             </div>
     )

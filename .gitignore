@@ -185,5 +185,5 @@ dmypy.json
 
 ### CUSTOM STUFF ###
 /.vscode
-/backend.bat
-/frontend.bat
+/back.bat
+/front.bat

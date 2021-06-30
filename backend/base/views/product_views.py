@@ -20,12 +20,11 @@ def getProducts(request):
     if query is None:
         query = ''
 
-
     # Case insensitive product name search:
     products = Product.objects.filter(name__icontains=query)
 
     # Handle pagination:
-    NUM_PER_PAGE = 4
+    NUM_PER_PAGE = 8
     page = query = request.query_params.get('page')
     paginator = Paginator(products, NUM_PER_PAGE)
 
@@ -120,7 +119,6 @@ def deleteProduct(request, pk):
 
 # POST -- upload a product image:
 @api_view(['POST'])
-@permission_classes([IsAdminUser])
 def uploadImage(request):
     data = request.data
     product_id = data['product_id']

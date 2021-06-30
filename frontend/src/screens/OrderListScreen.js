@@ -54,7 +54,7 @@ function OrderListScreen({ history }) {
                         >
                             <thead className="thead-light">
                                 <tr>
-                                    <th className="pl-2">ID</th>
+                                    <th className="text-center">#</th>
                                     <th className="pl-2">USER</th>
                                     <th className="pl-2">DATE</th>
                                     <th className="pl-2">TOTAL</th>
@@ -79,9 +79,9 @@ function OrderListScreen({ history }) {
                                         </td>
 
                                         <td className="h4 pt-2 text-center">{ order.isDelivered ? (
-                                            <i className="fas fa-box" style={{ color: "#00CC00" }}></i>
+                                            <i className="fas fa-box" style={{ color: "#008000" }}></i>
                                         ) : (
-                                            <i className="fas fa-box-open" style={{ color: "#C1121F" }}></i>
+                                            <i className="fas fa-box-open" style={{ color: "#995609" }}></i>
                                         )}
                                         </td>
 

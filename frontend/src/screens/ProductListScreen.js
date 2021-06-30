@@ -104,49 +104,50 @@ function ProductListScreen({ history , match }) {
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
                     : (
                         <div>
-                        <Table  bordered hover responsive
-                                className="table table-sm"
-                        >
-                            <thead className="thead-light">
-                                <tr>
-                                    <th className="pl-2">ID</th>
-                                    <th className="pl-2">NAME</th>
-                                    <th className="pl-2">PRICE</th>
-                                    <th className="pl-2">CATEGORY</th>
-                                    <th className="pl-2">BRAND</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                { products.map( product => (
-                                    <tr key={ product._id }>
-                                        <td className="pt-3 pl-2">{ product._id }</td>
-                                        <td className="pt-3 pl-2">{ product.name }</td>
-                                        <td className="pt-3 pl-2">${ product.price }</td>
-                                        <td className="pt-3 pl-2">{ product.category }</td>
-                                        <td className="pt-3 pl-2">{ product.brand }</td>
-
-                                        <td className="mx-0 text-center">
-                                            <LinkContainer to={`/admin/product/${ product._id }/edit`}>
-                                                <Button variant="outline-primary"
-                                                        className="btn-sm mx-2 px-3">
-                                                    <i className="fas fa-edit"></i>
-                                                </Button>
-                                            </LinkContainer>
-
-                                            <Button variant="outline-danger"
-                                                    className="btn-sm px-3"
-                                                    onClick={ () => deleteProductHandler(product._id) }>
-                                                <i className="far fa-trash-alt"></i>
-                                            </Button>
-                                        </td>
+                            <Table  bordered hover responsive
+                                    className="table table-sm"
+                            >
+                                <thead className="thead-light">
+                                    <tr>
+                                        <th className="pl-2">ID</th>
+                                        <th className="pl-2">NAME</th>
+                                        <th className="pl-2">PRICE</th>
+                                        <th className="pl-2">CATEGORY</th>
+                                        <th className="pl-2">BRAND</th>
+                                        <th></th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                                </thead>
 
-                        <Paginate pages={pages} page={page} isAdmin={true} />
+                                <tbody>
+                                    { products.map( product => (
+                                        <tr key={ product._id }>
+                                            <td className="pt-3 pl-2">{ product._id }</td>
+                                            <td className="pt-3 pl-2">{ product.name }</td>
+                                            <td className="pt-3 pl-2">${ product.price }</td>
+                                            <td className="pt-3 pl-2">{ product.category }</td>
+                                            <td className="pt-3 pl-2">{ product.brand }</td>
+
+                                            <td className="mx-0 text-center">
+                                                <LinkContainer to={`/admin/product/${ product._id }/edit`}>
+                                                    <Button variant="outline-primary"
+                                                            className="btn-sm mx-2 px-3">
+                                                        <i className="fas fa-edit"></i>
+                                                    </Button>
+                                                </LinkContainer>
+
+                                                <Button variant="outline-danger"
+                                                        className="btn-sm px-3"
+                                                        onClick={ () => deleteProductHandler(product._id) }>
+                                                    <i className="far fa-trash-alt"></i>
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                            <div className="d-flex flex-row justify-content-center mt-3">                            
+                                <Paginate pages={pages} page={page} isAdmin={true} />
+                            </div>
                         </div>
                     )
             }
