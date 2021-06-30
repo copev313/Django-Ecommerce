@@ -26,20 +26,17 @@ function HomeScreen({ history }) {
     let keyword = history.location.search
 
     useEffect(() => { 
-        dispatch(listProducts(keyword)) 
+        dispatch(listProducts(keyword))
 
     }, [dispatch, keyword] )
 
 
     return (
         <div>
-
             { !keyword && <ProductCarousel /> }
             
             <h2 id="home-screen-latest-title">
-                { !keyword ? ( <ins>Latest Products</ins> ) :
-                    ( <ins>Search Results</ins> )
-                }
+                <ins>Latest Products</ins>
             </h2>
             { loading ? (  
                 <div>
