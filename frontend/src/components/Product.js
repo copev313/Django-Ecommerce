@@ -17,7 +17,7 @@ function Product({ product }) {
                 <Link to={ `/product/${ product._id }` }>
                     <Card.Title 
                         as="div"
-                        className="product-title"
+                        className="custom-lime"
                         id="product-card-title"
                     >
                         <strong>

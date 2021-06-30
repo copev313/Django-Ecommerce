@@ -82,7 +82,7 @@ function ProductListScreen({ history , match }) {
         <div>
             <Row className="align-items-center">
                 <Col>
-                    <h1 className="my-4 admin-title">Products</h1>
+                    <h1 className="my-4 fw-500">Products</h1>
                 </Col>
                 <Col className="text-right">
                     <Button className="my-3 mt-3 mr-2 py-2" onClick={ createProductHandler } variant="info">

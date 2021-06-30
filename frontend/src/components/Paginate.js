@@ -22,7 +22,6 @@ function Paginate({ pages, page, keyword='', isAdmin=false }) {
                 >
                     <Pagination.Item 
                         active={ x + 1 === page }
-                        className=""
                     > 
                         <span className="h6 p-2 fw-500">{x + 1}</span>
                     </Pagination.Item>

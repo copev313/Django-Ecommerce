@@ -44,7 +44,7 @@ function OrderListScreen({ history }) {
 
     return (
         <div>
-            <h1 className="my-4 admin-title">Orders</h1>
+            <h1 className="my-4 fw-500">Orders</h1>
 
             { loading ? ( <Loader /> ) :
                 error ? ( <Message variant='danger'>{ error }</Message> ) 
