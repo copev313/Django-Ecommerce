@@ -24,6 +24,10 @@ import {
     PRODUCT_CREATE_REVIEW_SUCCESS,
     PRODUCT_CREATE_REVIEW_FAIL,
 
+    PRODUCT_FEATURED_REQUEST,
+    PRODUCT_FEATURED_SUCCESS,
+    PRODUCT_FEATURED_FAIL,
+
 } from '../constants/productConstants';
 
 
@@ -47,6 +51,29 @@ export const listProducts = (keyword = '') => async (dispatch) => {
         })
     }
 }
+
+
+export const listFeaturedProducts = () => async (dispatch) => {
+
+    try {
+        dispatch({ type: PRODUCT_FEATURED_REQUEST })
+
+        const { data } = await axios.get(`/api/products/featured/`)
+
+        dispatch({ 
+            type: PRODUCT_FEATURED_SUCCESS,
+            payload: data,
+        })
+    }
+    catch (error) {
+        dispatch({ 
+            type: PRODUCT_FEATURED_FAIL,
+            payload: error.response && error.response.data.detail ?
+                error.response.data.detail : error.message,
+        })
+    }
+}
+
 
 
 export const listProductDetails = (id) => async (dispatch) => {

@@ -5,6 +5,7 @@ import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
+import ProductCarousel from '../components/ProductCarousel';
 import { listProducts } from '../actions/productActions';
 
 
@@ -32,8 +33,13 @@ function HomeScreen({ history }) {
 
     return (
         <div>
+
+            { !keyword && <ProductCarousel /> }
+            
             <h2 id="home-screen-latest-title">
-                <ins>Latest Products</ins>
+                { !keyword ? ( <ins>Latest Products</ins> ) :
+                    ( <ins>Search Results</ins> )
+                }
             </h2>
             { loading ? (  
                 <div>

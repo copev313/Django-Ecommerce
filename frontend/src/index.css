@@ -18,6 +18,18 @@ main { min-height: 80vh; }
     margin-left: -1.25em;
 }
 
+.fw-500 {
+    font-weight: 500;
+}
+
+.darkgreen {
+    color: darkgreen;
+}
+
+.custom-lime {
+    color: #009600;
+}
+
 /* Make the font size a little smaller in the Footer Component */
 Footer {
     font-size: 12px;
@@ -33,20 +45,13 @@ Footer {
     padding-top: 1rem;
 }
 
+
 /* Darken the green `success` colored product titles in the Product Component & CartScreen */
 /* Add standardized hieght space for all Product cards. (May need*/
 #product-card-title {
     height: 4em;
 }
 
-.product-title,
-.custom-lime {
-    color: #009600;
-}
-
-.darkgreen {
-    color: darkgreen;
-}
 
 /* Fix spacing around Shopping Cart title */
 #shopping-cart-title,
@@ -61,7 +66,6 @@ Footer {
     padding-bottom: 1rem;
 }
 
-
 #user-profile-title,
 #my-orders-title,
 #admin-user-list-title,
@@ -73,32 +77,88 @@ Footer {
     padding-bottom: 1rem;
 }
 
-.admin-title {
-    font-weight: 500;
-}
-
-
+/* Set the font-size of the 'Latest Products' title on the home page */
 #home-screen-latest-title {
     font-size: 2rem;
     padding-top: 1.4rem;
     padding-bottom: 1rem;
 }
 
-/* Make Username Dropdown Font Bigger / Same Size as CART Font */
+/* Make Username + Admin Dropdown Font Bigger / Same Size as CART Font */
 #username-nav-dropdown,
 #admin-dropdown-menu {
     font-size: 0.80em;
     padding-top: 0.5em;
 }
 
+/* Adjust the min-width of the link container around our 'CART' navbar link */
 #cart-link-container {
     min-width: fit-content;
 }
 
+/* Adjust font-size on cart screen for the 'continue shopping' button */
 #continue-shopping-btn {
     font-size: 0.7rem;
 }
 
-.fw-500 {
+/* Paginate Component */
+.pagination {
+    color:rgb(71, 64, 64);
+}
+
+
+
+/* Carousel Component */
+.carousel {
+    background-image: linear-gradient(#FFF, #FFF, #b4b4b4, #696969);
+    /*background-image: linear-gradient(#FFF, #FFF, #ffffffbe, #ffffff00);*/
+    border: none;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item-active {
+    display: flex;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+}
+
+.carousel-caption h4 {
+    color: #FFF;
     font-weight: 500;
+    letter-spacing: 0.15px;
+}
+
+.carousel img {
+    display: block;
+    height: 300px;
+    padding: 15px 10px 15px 10px;
+    margin: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    object-fit: contain;
+}
+
+.carousel a {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    #product-card-title {
+        font-size:1.1em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .carousel-caption h4 {
+        font-size: 2.5vw;
+    }
+
+    #product-card-title {
+        font-size: 1.2em;
+    }
 }
