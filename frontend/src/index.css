@@ -112,8 +112,6 @@ Footer {
     color:rgb(71, 64, 64);
 }
 
-
-
 /* Carousel Component */
 .carousel {
     background-image: linear-gradient(#FFF, #FFF, #b4b4b4, #696969);
@@ -153,18 +151,68 @@ Footer {
     margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+.carousel-caption h4 {
+    font-size: 2vh;
+}
+
+
+@media only screen and (min-width: 1px) { 
+
     #product-card-title {
-        font-size:1.1em;
+        font-size: 2.5vh;
     }
 }
 
-@media screen and (max-width: 900px) {
+@media only screen and (min-width: 576px) { 
     .carousel-caption h4 {
-        font-size: 2.5vw;
+        font-size: 16px;
     }
 
     #product-card-title {
-        font-size: 1.2em;
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) { 
+    .carousel-caption h4 {
+        font-size: 18px;
+    }
+
+    #product-card-title {
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (min-width: 992px) { 
+    .carousel-caption h4 {
+        font-size: 18px;
+    }
+
+    #product-card-title {
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) { 
+    .carousel-caption h4 {
+        font-size: 20px;
+    }
+
+    #product-card-title {
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (min-width: 1400px) { 
+    .carousel-caption h4 {
+        font-size: 20px;
+    }
+
+    #product-card-title {
+        font-size: 14px;
     }
 }

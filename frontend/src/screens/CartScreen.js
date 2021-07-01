@@ -65,7 +65,7 @@ function CartScreen({ match, location, history }) {
                                     </Col>
 
                                     <Col md={4}>
-                                        <Link to={ `/product/${item.product}` }  className="product-title">
+                                        <Link to={ `/product/${item.product}` }  className="product-title custom-lime">
                                             { item.name }
                                         </Link>
                                     </Col>

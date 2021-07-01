@@ -158,7 +158,7 @@ function ProductScreen({ match, history }) {
                                     )}
 
                                     <ListGroup.Item>
-                                        <Button className={ `btn-block btn-lg 
+                                        <Button className={ `btn-block btn-lg
                                                             ${ (product.countInStock === 0) ?
                                                                 "btn-secondary" : "btn-info" }`
                                                         }
@@ -166,7 +166,7 @@ function ProductScreen({ match, history }) {
                                                 type="button"
                                                 onClick={ addToCartHandler }
                                         >
-                                            ADD TO CART
+                                            <span className="h6 fw-500">ADD TO CART</span>
                                         </Button>
                                     </ListGroup.Item>
                                 </ListGroup>
