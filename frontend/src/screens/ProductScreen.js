@@ -93,6 +93,7 @@ function ProductScreen({ match, history }) {
                                             text={ `${ product.numReviews }` }
                                             color={ "darkgreen" }
                                     />
+                        
                                 </ListGroup.Item>
 
 
@@ -100,6 +101,10 @@ function ProductScreen({ match, history }) {
                                     <p className="mt-2">
                                         { product.description }
                                     </p>
+
+                                    <span class="badge bg-secondary px-2 py-1 category-tag">
+                                        { product.category }
+                                    </span>
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
@@ -166,6 +171,14 @@ function ProductScreen({ match, history }) {
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Card>
+
+                            { product.featured && (
+                                <div className="px-2 py-3 m-3 bg-success text-center rounded border border-dark">
+                                    <strong className="h5 text-dark">Featured Product!</strong>
+                                </div>
+                            )}
+
+
                         </Col>
                     </Row>
 
@@ -221,7 +234,7 @@ function ProductScreen({ match, history }) {
                                                     <Form.Label className="mr-3 mt-2">Review:</Form.Label>
                                                     <Form.Control
                                                         as="textarea"
-                                                        row="5"
+                                                        rows={4}
                                                         value={ comment }
                                                         onChange={(e) => setComment(e.target.value)}
                                                     ></Form.Control>

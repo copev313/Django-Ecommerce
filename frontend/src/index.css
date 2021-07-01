@@ -30,6 +30,12 @@ main { min-height: 80vh; }
     color: #009600;
 }
 
+.category-tag {
+    color: #afffaf;
+    font-weight: 300;
+    letter-spacing: 0.25px;
+}
+
 /* Make the font size a little smaller in the Footer Component */
 Footer {
     font-size: 12px;
