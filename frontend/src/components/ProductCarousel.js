@@ -20,7 +20,6 @@ function ProductCarousel() {
     }, [dispatch])
 
 
-
     return  ( loading ? <GrowingLoader /> :
                 error ? <Message variant="danger">{ error }</Message> :
                 (
@@ -43,7 +42,6 @@ function ProductCarousel() {
                                 </Link>
                             </Carousel.Item>
                         ))}
-
                     </Carousel>
                 )
     )

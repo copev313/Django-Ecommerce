@@ -21,36 +21,35 @@ import ProductEditScreen from './screens/ProductEditScreen';
 
 
 function App() {
-  return (
-    <Router>
 
-      <Header />
+    return (
+        <Router>
+            <Header />
 
-        <main className="py-3">
-          <Container>
-            <Route path="/" component={HomeScreen} exact />
-            <Route path="/product/:id?" component={ProductScreen} />
-            <Route path="/cart/:id?" component={CartScreen} />
-            <Route path="/login" component={LoginScreen} />
-            <Route path="/register" component={RegisterScreen} />
-            <Route path="/profile" component={ProfileScreen} />
-            <Route path="/shipping" component={ShippingScreen} />
-            <Route path="/payment" component={PaymentScreen} />
-            <Route path="/placeorder" component={PlaceOrderScreen} />
-            <Route path="/order/:id" component={OrderScreen} />
+                <main className="py-3">
+                <Container>
+                    <Route path="/" component={HomeScreen} exact />
+                    <Route path="/product/:id?" component={ProductScreen} />
+                    <Route path="/cart/:id?" component={CartScreen} />
+                    <Route path="/login" component={LoginScreen} />
+                    <Route path="/register" component={RegisterScreen} />
+                    <Route path="/profile" component={ProfileScreen} />
+                    <Route path="/shipping" component={ShippingScreen} />
+                    <Route path="/payment" component={PaymentScreen} />
+                    <Route path="/placeorder" component={PlaceOrderScreen} />
+                    <Route path="/order/:id" component={OrderScreen} />
 
-            <Route path="/admin/userlist" component={UserListScreen} />
-            <Route path="/admin/user/:id/edit" component={UserEditScreen} />
-            <Route path="/admin/productlist" component={ProductListScreen} />
-            <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
-            <Route path="/admin/orderlist" component={OrderListScreen} />
-          </Container>
-        </main>
+                    <Route path="/admin/userlist" component={UserListScreen} />
+                    <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+                    <Route path="/admin/productlist" component={ProductListScreen} />
+                    <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+                    <Route path="/admin/orderlist" component={OrderListScreen} />
+                </Container>
+                </main>
 
-      <Footer />
-
-    </Router>
-  );
+            <Footer />
+        </Router>
+    );
 }
 
 

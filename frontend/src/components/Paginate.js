@@ -11,24 +11,24 @@ function Paginate({ pages, page, keyword='', isAdmin=false }) {
 
 
     return ( pages > 1 && (
-        <Pagination>
-            { [...Array(pages).keys()].map((x) => (
-                <LinkContainer 
-                    key={x + 1}
-                    to={ !isAdmin ? 
-                        `/?keyword=${keyword}&page=${x + 1}` :
-                        `/admin/productlist/?keyword=${keyword}&page=${x + 1}`
-                    }
-                >
-                    <Pagination.Item 
-                        active={ x + 1 === page }
-                    > 
-                        <span className="h6 p-2 fw-500">{x + 1}</span>
-                    </Pagination.Item>
-                </LinkContainer>
-            ))}
-        </Pagination>
-    )
+            <Pagination>
+                { [...Array(pages).keys()].map((x) => (
+                    <LinkContainer 
+                        key={x + 1}
+                        to={ !isAdmin ? 
+                            `/?keyword=${keyword}&page=${x + 1}` :
+                            `/admin/productlist/?keyword=${keyword}&page=${x + 1}`
+                        }
+                    >
+                        <Pagination.Item 
+                            active={ x + 1 === page }
+                        > 
+                            <span className="h6 p-2 fw-500">{x + 1}</span>
+                        </Pagination.Item>
+                    </LinkContainer>
+                ))}
+            </Pagination>
+        )
     )
 }
 

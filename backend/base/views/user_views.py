@@ -112,12 +112,11 @@ def updateUser(request, pk):
     user.username = data['email']
     user.email = data['email']
     user.is_staff = data['isAdmin']
-    
+
     if (data['password'] != ''):
         user.password = make_password(data['password'])
 
     user.save()
-
     serializer = UserSerializer(user, many=False)
 
     return Response(serializer.data)

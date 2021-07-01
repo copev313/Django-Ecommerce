@@ -26,6 +26,7 @@ function Header() {
 
     return (
         <header>
+
             <Navbar className="pt-3 pb-4"
                     bg="dark"
                     variant="dark"
@@ -115,8 +116,8 @@ function Header() {
                                         </span>
                                     </NavDropdown.Item>
                                 </NavDropdown>
-                            ) :
-                            (
+
+                            ) : (
                                 <LinkContainer to="/login">
                                     <Nav.Link className="text-right font-weight-light ml-1">
                                         <span className="h6">
@@ -126,13 +127,11 @@ function Header() {
                                     </Nav.Link>
                                 </LinkContainer>
                             )}
-
-                            
-
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
         </header>
     )
 }

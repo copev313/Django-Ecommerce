@@ -3,6 +3,7 @@ Django==3.1.7
 django-cors-headers==3.7.0
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.7.0
+flake8==3.9.0
 mccabe==0.6.1
 Pillow==8.2.0
 pycodestyle==2.7.0

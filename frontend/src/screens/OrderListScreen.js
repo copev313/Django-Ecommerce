@@ -1,11 +1,9 @@
-import React, { /*useState,*/ useEffect } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { listOrders } from '../actions/orderActions';
-import { userLogin } from '../actions/userActions';
 
 
 function OrderListScreen({ history }) {
@@ -15,7 +13,7 @@ function OrderListScreen({ history }) {
     const orderList = useSelector( state => state.orderList )
     const { loading, error, orders } = orderList
 
-    const userLogin = useSelector( state => state.userLogin )
+    const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
 

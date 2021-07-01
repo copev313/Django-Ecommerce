@@ -75,7 +75,6 @@ export const listFeaturedProducts = () => async (dispatch) => {
 }
 
 
-
 export const listProductDetails = (id) => async (dispatch) => {
 
     try {
@@ -116,7 +115,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.delete(
+        await axios.delete(
             `/api/products/delete/${id}/`,
             config
         )

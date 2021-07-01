@@ -1,7 +1,8 @@
-import React from 'react'
-import { Alert } from 'react-bootstrap'
+import React from 'react';
+import { Alert } from 'react-bootstrap';
 
 function Message({variant, children}) {
+
     return (
         <Alert variant={variant} >
             {children}
@@ -9,4 +10,5 @@ function Message({variant, children}) {
     )
 }
 
-export default Message
+
+export default Message;

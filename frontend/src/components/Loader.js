@@ -17,7 +17,6 @@ function Loader() {
             }}
         >
             <span className="sr-only">Loading . . . </span>
-
         </Spinner>
     )
 }
