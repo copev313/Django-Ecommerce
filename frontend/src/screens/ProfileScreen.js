@@ -223,7 +223,7 @@ function ProfileScreen({ history }) {
                                         </td>
                                         <td className="pt-2">
                                             { order.isDelivered ? order.deliveredAt.substring(0, 10) :
-                                                <em>Not Delivered</em>
+                                                <em className="text-muted">Not Delivered</em>
                                             }
                                         </td>
                                         <td>
