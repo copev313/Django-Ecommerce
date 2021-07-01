@@ -33,6 +33,7 @@
 
 ### Ideas for Improvement:
  - add 'sku' attribute to Product model
- - add 'featured' column to Products admin table
- - add checkbox for 'featured' attribute to ProductEdit screen
-
+ - add ability to mark an order as cancelled
+ - add shipping method options
+ - add a 'onSale' attribute to the product model
+ - add a categories bar at the top of the home page
