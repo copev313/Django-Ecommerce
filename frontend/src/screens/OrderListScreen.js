@@ -41,6 +41,8 @@ function OrderListScreen({ history }) {
         return `${dateFormatted} @ ${timeFormatted} ${ (hours > 12) ? 'PM' : 'AM'} (UTC)`
     }
 
+    const zeroPadding = (num) => ('00000'+num).slice(-5)
+
 
     return (
         <div>
@@ -54,20 +56,28 @@ function OrderListScreen({ history }) {
                         >
                             <thead className="thead-light">
                                 <tr>
-                                    <th className="text-center">#</th>
+                                    <th className="pl-2">NO.</th>
                                     <th className="pl-2">USER</th>
                                     <th className="pl-2">DATE</th>
                                     <th className="pl-2">TOTAL</th>
                                     <th className="text-center">PAID</th>
                                     <th className="text-center">DELIVERED</th>
-                                    <th className="m-0 p-0"></th>
+                                    {/* <th className="m-0 p-0"></th> */}
                                 </tr>
                             </thead>
 
                             <tbody>
                                 { orders.map( order => (
                                     <tr key={ order._id }>
-                                        <td className="pt-3 pl-2">{ order._id }</td>
+                                        <td className="pt-3 pl-2 fw-500 custom-lime">
+                                            <a 
+                                                href={`/order/${ order._id }`}
+                                                className="custom-lime"
+                                                target="_blank" rel="noreferrer"
+                                            >
+                                                { zeroPadding( order._id ) }
+                                            </a>
+                                        </td>
                                         <td className="pt-3 pl-2">{ order.user && order.user.name }</td>
                                         <td className="pt-3 pl-2">{ formatTimestamp(order.createdAt) }</td>
                                         <td className="pt-3 pl-2">${ order.totalPrice }</td>
@@ -84,7 +94,7 @@ function OrderListScreen({ history }) {
                                             <i className="fas fa-box-open" style={{ color: "#995609" }}></i>
                                         )}
                                         </td>
-
+                                    {/*
                                         <td className="mx-0 text-center">
                                             <LinkContainer to={`/order/${ order._id }`}>
                                                 <Button variant="outline-dark"
@@ -93,6 +103,7 @@ function OrderListScreen({ history }) {
                                                 </Button>
                                             </LinkContainer>
                                         </td>
+                                    */}
                                     </tr>
                                 ))}
                             </tbody>

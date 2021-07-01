@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios  from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import GrowingLoader from '../components/GrowingLoader';
@@ -24,6 +24,7 @@ function ProductEditScreen({ match, history }) {
     const [description, setDescription] = useState('')
     const [featured, setFeatured] = useState(false)
     const [uploading, setUploading] = useState(false)
+    const [message, setMessage] = useState('')
 
     const dispatch = useDispatch()
 
@@ -41,7 +42,8 @@ function ProductEditScreen({ match, history }) {
 
         if (successUpdate) {
             dispatch({ type: PRODUCT_UPDATE_RESET })
-            history.push('/admin/productlist')
+            setMessage("Product successfully updated")
+            /* history.push('/admin/productlist') */
         } else {
             if (!product.name || product._id !== Number(productId)) {
                 dispatch( listProductDetails(productId) )
@@ -108,7 +110,22 @@ function ProductEditScreen({ match, history }) {
                 </Link>
 
                 <FormContainer>
-                    <h2 className="p-0" id="edit-user-title">Edit Product</h2>
+                    {/* Handle Error Messages & Successful Updates*/}
+                    { message &&
+                        <Alert 
+                            variant="success"
+                            onClose={() => setMessage('')}
+                            dismissible
+                            className="text-center fw-500"
+                        >
+                            { message }
+                        </Alert>
+                    }
+
+                    <h2 className="p-0" id="edit-user-title">
+                    <i className="fas fa-edit" style={{ fontSize: "1.25em", padding: "10px" }}></i> {' '}
+                        Edit Product
+                    </h2>
 
                     { loadingUpdate && <Loader /> }
                     { errorUpdate && <Message variant="danger">{ errorUpdate }</Message>}

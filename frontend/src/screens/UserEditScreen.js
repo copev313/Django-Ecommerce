@@ -93,7 +93,10 @@ function UserEditScreen({ match, history }) {
                         <Alert variant={ alertVariant } onClose={() => setMessage('')} dismissible>{ message }</Alert>
                     }
 
-                    <h2 className="m-0 p-0" id="edit-user-title">Edit User</h2>
+                    <h2 className="m-0 p-0" id="edit-user-title">
+                        <i className="fas fa-user-edit" style={{ fontSize: "1.25em", padding: "10px"}}></i> {' '}
+                        Edit User
+                    </h2>
 
                     { loadingUpdate && ( <Loader /> )}
                     { errorUpdate && <Message variant="danger">{ errorUpdate }</Message>}
@@ -105,6 +108,7 @@ function UserEditScreen({ match, history }) {
                                 <Form.Group controlId="name" className="mt-4">
                                     <Form.Label>Name</Form.Label>
                                     <Form.Control
+                                        required
                                         type="name"
                                         placeholder="Enter Name"
                                         className={ name ? (
@@ -119,6 +123,7 @@ function UserEditScreen({ match, history }) {
                                 <Form.Group controlId="email" className="my-4">
                                     <Form.Label>Email Address</Form.Label>
                                     <Form.Control
+                                        required
                                         type="email"
                                         placeholder="Enter Email"
                                         className={ email ? (
@@ -138,7 +143,6 @@ function UserEditScreen({ match, history }) {
                                 <Form.Group controlId="password">
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control
-                                        required
                                         type="password"
                                         placeholder="Enter Password"
                                         className={ password ? (
@@ -153,10 +157,9 @@ function UserEditScreen({ match, history }) {
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group controlId="passwordConfirm">
+                                <Form.Group controlId="passwordConfirm" className="mb-4">
                                     <Form.Label>Confirm Password</Form.Label>
                                     <Form.Control
-                                        required
                                         type="password"
                                         placeholder="Confirm Password"
                                         className={ (confirmPassword.length >= 8) ? (
@@ -171,7 +174,9 @@ function UserEditScreen({ match, history }) {
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group controlId="isadmin" className="mt-5 p-0">
+                                <hr></hr>
+
+                                <Form.Group controlId="isadmin" className="mt-4 p-0">
                                 <Form.Label>Account Roles</Form.Label>
                                     <Form.Check
                                         className="ml-4 mt-2"

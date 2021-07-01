@@ -89,8 +89,9 @@ function OrderScreen({ history, match }) {
         if (window.confirm("Are you sure you want to mark this order as delivered?")) {
             dispatch( deliverOrder(order) )
         }
-        
     }
+
+    const zeroPadding = (num) => ('00000'+num).slice(-5)
 
 
     return  loading ? (
@@ -101,7 +102,7 @@ function OrderScreen({ history, match }) {
     ) : 
     (
         <div>
-            <h2 id="ordersummary-screen-title">Order Invoice -- # {orderId}</h2>
+            <h2 id="ordersummary-screen-title">Order Invoice [#{ zeroPadding(orderId) }]</h2>
 
                 <Row>
                     <Col md={8}>

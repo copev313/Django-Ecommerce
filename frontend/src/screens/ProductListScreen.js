@@ -109,7 +109,7 @@ function ProductListScreen({ history , match }) {
                             >
                                 <thead className="thead-light">
                                     <tr>
-                                        <th className="text-center">ID</th>
+                                        <th className="pl-2">ID</th>
                                         <th className="pl-2">NAME</th>
                                         <th className="pl-2">PRICE</th>
                                         <th className="pl-2">STOCK</th>
@@ -123,24 +123,32 @@ function ProductListScreen({ history , match }) {
                                     { products.map( product => (
                                         <tr key={ product._id }>
                                             <td className="pt-3 pl-2">{ product._id }</td>
-                                            <td className="pt-3 pl-2">{ product.name }</td>
+                                            <td className="pt-3 pl-2">
+                                                <a 
+                                                    href={`/admin/product/${ product._id }/edit`}
+                                                    className="custom-lime fw-500"
+                                                >
+                                                    { product.name }
+                                                </a>
+                                            </td>
                                             <td className="pt-3 pl-2">${ product.price }</td>
                                             <td className="pt-3 pl-2">{ product.countInStock }</td>
                                             <td className="pt-3 pl-2">{ product.category }</td>
                                             <td className="pt-3 pl-2">{ product.brand }</td>
 
                                             <td className="mx-0 text-center">
-                                                <LinkContainer to={`/admin/product/${ product._id }/edit`}>
-                                                    <Button variant="outline-primary"
-                                                            className="btn-sm mx-2 px-3">
-                                                        <i className="fas fa-edit"></i>
+                                                <a href={`/product/${ product._id }`} target="_blank" rel="noreferrer" >
+                                                    <Button variant="outline-secondary"
+                                                            className="btn-sm mx-2 px-3"
+                                                    >
+                                                        <i className="fas fa-eye" style={{ fontSize: "1.2em", paddingTop: "5px" }}></i>
                                                     </Button>
-                                                </LinkContainer>
+                                                </a>
 
                                                 <Button variant="outline-danger"
                                                         className="btn-sm px-3"
                                                         onClick={ () => deleteProductHandler(product._id) }>
-                                                    <i className="far fa-trash-alt"></i>
+                                                    <i className="far fa-trash-alt" style={{ fontSize: "1.2em", paddingTop: "5px" }}></i>
                                                 </Button>
                                             </td>
                                         </tr>
