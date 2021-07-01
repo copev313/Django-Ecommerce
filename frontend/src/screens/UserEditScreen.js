@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button, Row, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -15,7 +15,11 @@ function UserEditScreen({ match, history }) {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const [isAdmin, setIsAdmin] = useState(false)
+    const [message, setMessage] = useState('')
+    const [alertVariant, setAlertVariant] = useState('')
 
     const dispatch = useDispatch()
 
@@ -28,7 +32,7 @@ function UserEditScreen({ match, history }) {
     useEffect( () => {
         if (successUpdate) {
             dispatch({ type: USER_UPDATE_RESET })
-            history.push('/admin/userlist/')
+            /*history.push('/admin/userlist/')*/
         }
         else {
             if (!user.name || user._id !== Number(userId)) {
@@ -47,23 +51,48 @@ function UserEditScreen({ match, history }) {
         return re.test(String(email).toLowerCase())
     }
 
-    const handleAdminCheckboxOnChange = () => {
-        setIsAdmin(!isAdmin)
-    }
-
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch( updateUser({_id: user._id, name, email, isAdmin}) )
+        // [CASE] Password Doesn't Meet Length Requirement:
+        if (password && password.length < 8) {
+            setAlertVariant("danger")
+            setMessage("Password must contain at least 8 characters!")
+        }
+        // [CASE] Passwords DON'T match:
+        else if(password !== confirmPassword) {
+            setAlertVariant("danger")
+            setMessage("Passwords do not match!")
+        }
+        // [CASE] Passwords match or DNE:
+        else {
+            // Confirmation Message:
+            if (window.confirm("Are you sure you want to update this user's account information?")) {
+                dispatch( updateUser({
+                    _id: user._id,
+                    name,
+                    email,
+                    isAdmin,
+                    password
+                }))
+                setAlertVariant("success")
+                setMessage("Account Updated")
+            } 
+        }
     }
 
 
     return ( 
             <div>
-                <Link to="/admin/userlist" className="btn btn-dark my-4">
+                <Link to="/admin/userlist" className="btn btn-dark mt-3">
                     Go Back
                 </Link>
 
                 <FormContainer>
+                    {/* Handle Error Messages & Successful Updates*/}
+                    { message &&
+                        <Alert variant={ alertVariant } onClose={() => setMessage('')} dismissible>{ message }</Alert>
+                    }
+
                     <h2 className="m-0 p-0" id="edit-user-title">Edit User</h2>
 
                     { loadingUpdate && ( <Loader /> )}
@@ -87,7 +116,7 @@ function UserEditScreen({ match, history }) {
                                     </Form.Control>
                                 </Form.Group>
 
-                                <Form.Group controlId="email" className="mt-4">
+                                <Form.Group controlId="email" className="my-4">
                                     <Form.Label>Email Address</Form.Label>
                                     <Form.Control
                                         type="email"
@@ -104,13 +133,52 @@ function UserEditScreen({ match, history }) {
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <Form.Group controlId="isadmin" className="m-0 p-0">
+                                <hr></hr>
+
+                                <Form.Group controlId="password">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control
+                                        required
+                                        type="password"
+                                        placeholder="Enter Password"
+                                        className={ password ? (
+                                                        password.length >= 8 ?
+                                                            "is-valid" : "is-invalid") : "" }
+                                        value={ password }
+                                        onChange={ (e) => setPassword(e.target.value) }
+                                    >
+                                    </Form.Control>
+                                    <Form.Control.Feedback type="invalid">
+                                        Required: Must be at least 8 characters long.
+                                    </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="passwordConfirm">
+                                    <Form.Label>Confirm Password</Form.Label>
+                                    <Form.Control
+                                        required
+                                        type="password"
+                                        placeholder="Confirm Password"
+                                        className={ (confirmPassword.length >= 8) ? (
+                                                        password === confirmPassword ? 
+                                                            "is-valid" : "is-invalid") : "" }
+                                        value={ confirmPassword }
+                                        onChange={ (e) => setConfirmPassword(e.target.value) }
+                                    >
+                                    </Form.Control>
+                                    <Form.Control.Feedback type="invalid">
+                                        Required: Must match password field.
+                                    </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group controlId="isadmin" className="mt-5 p-0">
+                                <Form.Label>Account Roles</Form.Label>
                                     <Form.Check
-                                        className="ml-2 mt-4"
-                                        type="checkbox"
-                                        label="Is Admin"
+                                        className="ml-4 mt-2"
+                                        type="switch"
+                                        label="ADMIN"
                                         checked={ isAdmin }
-                                        onChange={ handleAdminCheckboxOnChange }
+                                        onChange={ () => setIsAdmin(!isAdmin) }
                                     >
                                     </Form.Check>
                                 </Form.Group>
