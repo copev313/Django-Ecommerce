@@ -109,9 +109,10 @@ function ProductListScreen({ history , match }) {
                             >
                                 <thead className="thead-light">
                                     <tr>
-                                        <th className="pl-2">ID</th>
+                                        <th className="text-center">ID</th>
                                         <th className="pl-2">NAME</th>
                                         <th className="pl-2">PRICE</th>
+                                        <th className="pl-2">STOCK</th>
                                         <th className="pl-2">CATEGORY</th>
                                         <th className="pl-2">BRAND</th>
                                         <th></th>
@@ -124,6 +125,7 @@ function ProductListScreen({ history , match }) {
                                             <td className="pt-3 pl-2">{ product._id }</td>
                                             <td className="pt-3 pl-2">{ product.name }</td>
                                             <td className="pt-3 pl-2">${ product.price }</td>
+                                            <td className="pt-3 pl-2">{ product.countInStock }</td>
                                             <td className="pt-3 pl-2">{ product.category }</td>
                                             <td className="pt-3 pl-2">{ product.brand }</td>
 

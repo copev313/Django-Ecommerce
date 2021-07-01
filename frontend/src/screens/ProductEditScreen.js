@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios  from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import GrowingLoader from '../components/GrowingLoader';
@@ -22,6 +22,7 @@ function ProductEditScreen({ match, history }) {
     const [category, setCategory] = useState('')
     const [countInStock, setCountInStock] = useState(0)
     const [description, setDescription] = useState('')
+    const [featured, setFeatured] = useState(false)
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
@@ -53,6 +54,7 @@ function ProductEditScreen({ match, history }) {
                 setCategory(product.category)
                 setCountInStock(product.countInStock)
                 setDescription(product.description)
+                setFeatured(product.featured)
             }
         }
     }, [dispatch, product, productId, history, successUpdate])
@@ -68,7 +70,8 @@ function ProductEditScreen({ match, history }) {
             brand,
             category,
             countInStock,
-            description
+            description,
+            featured,
         }))
     }
 
@@ -100,12 +103,12 @@ function ProductEditScreen({ match, history }) {
 
     return ( 
             <div>
-                <Link to="/admin/productlist" className="btn btn-dark my-4">
+                <Link to="/admin/productlist" className="btn btn-dark mt-3">
                     Go Back
                 </Link>
 
                 <FormContainer>
-                    <h2 className="m-0 p-0" id="edit-user-title">Edit Product</h2>
+                    <h2 className="p-0" id="edit-user-title">Edit Product</h2>
 
                     { loadingUpdate && <Loader /> }
                     { errorUpdate && <Message variant="danger">{ errorUpdate }</Message>}
@@ -113,7 +116,8 @@ function ProductEditScreen({ match, history }) {
                     { loading ? ( <Loader /> ) :
                         error ? ( <Message variant="danger">{ error }</Message> 
                     ) : (
-                            <Form onSubmit={ submitHandler }>
+                            <Form onSubmit={ submitHandler } >
+
                                 <Form.Group controlId="name" className="mt-4" >
                                     <Form.Label>Name</Form.Label>
                                     <Form.Control
@@ -128,25 +132,45 @@ function ProductEditScreen({ match, history }) {
                                         Product name is required.
                                     </Form.Control.Feedback>
                                 </Form.Group>
+                                
+                            <Row>
+                                <Col>
+                                    <Form.Group controlId="price" className="pr-2 mr-auto">
+                                        <Form.Label>Price</Form.Label>
+                                        <Form.Control
+                                            type="number"
+                                            placeholder="Enter price"
+                                            className={ price >= 0 ? "" : "is-invalid" }
+                                            value={ price }
+                                            onChange={ (e) => setPrice(e.target.value) }
+                                        >
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">
+                                            A positive price value is required.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
 
+                                <Col>
+                                    <Form.Group controlId="countInStock" className="mx-auto">
+                                        <Form.Label>Stock Level</Form.Label>
+                                        <Form.Control
+                                            type="number"
+                                            placeholder="Enter stock level"
+                                            className={ countInStock >= 0 ? "" : "is-invalid" }
+                                            value={ countInStock }
+                                            onChange={ (e) => setCountInStock(e.target.value) }
+                                        >
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">
+                                            A valid stock level is required.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                        
 
-                                <Form.Group controlId="price" className="mt-4">
-                                    <Form.Label>Price</Form.Label>
-                                    <Form.Control
-                                        type="number"
-                                        placeholder="Enter price"
-                                        className={ price >= 0 ? "" : "is-invalid" }
-                                        value={ price }
-                                        onChange={ (e) => setPrice(e.target.value) }
-                                    >
-                                    </Form.Control>
-                                    <Form.Control.Feedback type="invalid">
-                                        A positive price value is required.
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-
-
-                                <Form.Group controlId="image" className="mt-4">
+                                <Form.Group controlId="image" >
                                     <Form.Label>Image</Form.Label>
                                     <Form.Control
                                         type="text"
@@ -168,55 +192,62 @@ function ProductEditScreen({ match, history }) {
 
                                 </Form.Group>
 
-                                <Form.Group controlId="category" className="mt-4">
-                                    <Form.Label>Category</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter category"
-                                        className={ category ? "" : "is-invalid" }
-                                        value={ category }
-                                        onChange={ (e) => setCategory(e.target.value) }
+                            <Row>
+                                <Col>
+                                    <Form.Group controlId="category" className="pr-2 mr-2">
+                                        <Form.Label>Category</Form.Label>
+                                        <Form.Control
+                                            as="select"
+                                            aria-label="Select product category"
+                                            value={ category }
+                                            className={ category ? "" : "is-invalid" }
+                                            onChange={ (e) => setCategory(e.target.value) }
+                                        >   
+                                            <option>Select a category...</option>
+                                            <option value="Electronics">Electronics</option>
+                                            <option value="Home">Home</option>
+                                            <option value="Jewelry">Jewelry</option>
+                                            <option value="Kitchen">Kitchen</option>
+                                            <option value="Apparel">Apparel</option>
+                                            <option value="Other">Other</option>
+                                        </Form.Control>
+                                        <Form.Control.Feedback type="invalid">
+                                            Please provide a category.
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+                                </Col>
+
+                                <Col>
+                                    <Form.Group controlId="brand" className="mx-auto">
+                                        <Form.Label>Brand</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="Enter brand"
+                                            value={ brand }
+                                            onChange={ (e) => setBrand(e.target.value) }
+                                        >
+                                        </Form.Control>
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+
+                                <Form.Group controlId="featured" className="">
+                                    <Form.Check
+                                        className="mt-4 mr-4 text-right text-info font-weight-bold"
+                                        type="switch"
+                                        label="Featured Product"
+                                        checked={ featured }
+                                        onChange={ () => setFeatured(!featured) }
                                     >
-                                    </Form.Control>
-                                    <Form.Control.Feedback type="invalid">
-                                        Please provide a category.
-                                    </Form.Control.Feedback>
+                                    </Form.Check>
                                 </Form.Group>
-
-
-                                <Form.Group controlId="brand" className="mt-4">
-                                    <Form.Label>Brand</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter brand"
-                                        value={ brand }
-                                        onChange={ (e) => setBrand(e.target.value) }
-                                    >
-                                    </Form.Control>
-                                </Form.Group>
-
-
-                                <Form.Group controlId="countInStock" className="mt-4">
-                                    <Form.Label>Stock</Form.Label>
-                                    <Form.Control
-                                        type="number"
-                                        placeholder="Enter stock level"
-                                        className={ countInStock >= 0 ? "" : "is-invalid" }
-                                        value={ countInStock }
-                                        onChange={ (e) => setCountInStock(e.target.value) }
-                                    >
-                                    </Form.Control>
-                                    <Form.Control.Feedback type="invalid">
-                                        A valid stock level is required.
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-
 
                                 <Form.Group controlId="description" className="mt-4">
                                     <Form.Label>Description</Form.Label>
                                     <Form.Control
-                                        type="text"
-                                        placeholder="Enter description"
+                                        as="textarea"
+                                        rows={5}
+                                        placeholder="Enter a description"
                                         value={ description }
                                         onChange={ (e) => setDescription(e.target.value) }
                                     >

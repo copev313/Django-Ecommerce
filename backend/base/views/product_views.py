@@ -101,6 +101,7 @@ def updateProduct(request, pk):
     product.countInStock = data['countInStock']
     product.category = data['category']
     product.description = data['description']
+    product.featured = data['featured']
 
     product.save()
 

@@ -58,6 +58,40 @@ function Header() {
                                 </Nav.Link>
                             </LinkContainer>
 
+                            { userInfo && userInfo.isAdmin && (
+                                <NavDropdown    title="Admin"
+                                                className="h5"
+                                                id="admin-dropdown-menu"
+                                >
+                                    <LinkContainer to="/admin/userlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-users pr-1"></i>{' '}
+                                                Users
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/productlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-tags pr-1"></i>{' '}
+                                                Products
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <LinkContainer to="/admin/orderlist">
+                                        <NavDropdown.Item>
+                                            <span className="h6">
+                                                <i class="fas fa-hand-holding-usd pr-1"></i>{' '}
+                                                Orders
+                                            </span>
+                                        </NavDropdown.Item>
+                                    </LinkContainer>
+                                </NavDropdown>
+                            )}
+
                             {/* [CASE] User is logged in. Show email/username. Don't show LOGIN. */}
                             { userInfo ? (
                                 <NavDropdown 
@@ -93,39 +127,7 @@ function Header() {
                                 </LinkContainer>
                             )}
 
-                            { userInfo && userInfo.isAdmin && (
-                                <NavDropdown    title="Admin"
-                                                className="h5"
-                                                id="admin-dropdown-menu"
-                                >
-                                    <LinkContainer to="/admin/userlist">
-                                        <NavDropdown.Item>
-                                            <span className="h6">
-                                                <i class="fas fa-users pr-1"></i>{' '}
-                                                Users
-                                            </span>
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-
-                                    <LinkContainer to="/admin/productlist">
-                                        <NavDropdown.Item>
-                                            <span className="h6">
-                                                <i class="fas fa-tags pr-1"></i>{' '}
-                                                Products
-                                            </span>
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-
-                                    <LinkContainer to="/admin/orderlist">
-                                        <NavDropdown.Item>
-                                            <span className="h6">
-                                                <i class="fas fa-hand-holding-usd pr-1"></i>{' '}
-                                                Orders
-                                            </span>
-                                        </NavDropdown.Item>
-                                    </LinkContainer>
-                                </NavDropdown>
-                            )}
+                            
 
                         </Nav>
                     </Navbar.Collapse>

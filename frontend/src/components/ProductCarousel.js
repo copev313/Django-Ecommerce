@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Carousel, Image } from 'react-bootstrap';
-import Loader from './Loader';
+import GrowingLoader from './GrowingLoader';
 import Message from './Message';
 import { listFeaturedProducts } from '../actions/productActions';
 
@@ -21,7 +21,7 @@ function ProductCarousel() {
 
 
 
-    return  ( loading ? <Loader /> :
+    return  ( loading ? <GrowingLoader /> :
                 error ? <Message variant="danger">{ error }</Message> :
                 (
                     <Carousel
