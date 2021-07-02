@@ -43,9 +43,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'storages',
 
     'base.apps.BaseConfig',
-
 ]
 
 REST_FRAMEWORK = {
@@ -55,7 +55,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -143,7 +143,7 @@ DATABASES = {
         'PORT': '5433',
     }
 }
-'''
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -186,3 +186,14 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = 'static/images'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+# Configurations for S3 Buckets / Product Image Files:
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_KEY']
+AWS_STORAGE_BUCKET_NAME = 'boutsacado-bucket'
+AWS_QUERYSTRING_AUTH = False
