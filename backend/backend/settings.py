@@ -33,6 +33,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'boutsacado.herokuapp.com',
+    'www.boutsacado.com',
+    'boutsacado.com',
 ]
 
 # Application definition
