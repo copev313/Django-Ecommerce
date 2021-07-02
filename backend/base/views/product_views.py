@@ -21,7 +21,7 @@ def getProducts(request):
         query = ''
 
     # Case insensitive product name search:
-    products = Product.objects.filter(name__icontains=query)
+    products = Product.objects.filter(name__icontains=query).order_by('_id')
 
     # Handle pagination:
     NUM_PER_PAGE = 8
