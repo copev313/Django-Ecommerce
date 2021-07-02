@@ -124,7 +124,7 @@ function ProductListScreen({ history , match }) {
                                             <td className="pt-3 pl-2">{ product._id }</td>
                                             <td className="pt-3 pl-2">
                                                 <a 
-                                                    href={`/admin/product/${ product._id }/edit`}
+                                                    href={`#/admin/product/${ product._id }/edit`}
                                                     className="custom-lime fw-500"
                                                 >
                                                     { product.name }
@@ -136,7 +136,7 @@ function ProductListScreen({ history , match }) {
                                             <td className="pt-3 pl-2">{ product.brand }</td>
 
                                             <td className="mx-0 text-center">
-                                                <a href={`/product/${ product._id }`} target="_blank" rel="noreferrer" >
+                                                <a href={`#/product/${ product._id }`} target="_blank" rel="noreferrer" >
                                                     <Button variant="outline-secondary"
                                                             className="btn-sm mx-2 px-3"
                                                     >

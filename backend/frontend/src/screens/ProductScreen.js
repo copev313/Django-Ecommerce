@@ -102,7 +102,7 @@ function ProductScreen({ match, history }) {
                                         { product.description }
                                     </p>
 
-                                    <span class="badge bg-secondary px-2 py-1 category-tag">
+                                    <span class="badge bg-secondary px-3 py-2 category-tag">
                                         { product.category }
                                     </span>
                                 </ListGroup.Item>
@@ -173,8 +173,21 @@ function ProductScreen({ match, history }) {
                             </Card>
 
                             { product.featured && (
-                                <div className="px-2 py-3 m-3 bg-success text-center rounded border border-dark">
-                                    <strong className="h5 text-dark">Featured Product!</strong>
+                                <div className="px-2 py-3 m-3 bg-success text-center text-dark h5 rounded border border-dark">
+                                     <i class="fas fa-trophy"></i>
+                                    <strong> Featured Product!</strong>
+                                </div>
+                            )}
+
+                            { userInfo && userInfo.isAdmin && (
+                                <div className="text-center mt-4">
+                                    <a  href={`#/admin/product/${ product._id }/edit`}
+                                        className="px-2 py-1 m-3 text-primary">
+                                        <Button variant="outline-primary">
+                                            <i className="fas fa-edit" style={{ fontSize: "1.2em" }}></i>
+                                            <strong className="pl-1"> Edit Product</strong>
+                                        </Button>
+                                    </a>
                                 </div>
                             )}
 

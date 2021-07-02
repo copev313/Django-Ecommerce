@@ -248,7 +248,7 @@ function ProductEditScreen({ match, history }) {
                                 </Col>
                             </Row>
 
-                                <Form.Group controlId="featured" className="">
+                                <Form.Group controlId="featured">
                                     <Form.Check
                                         className="mt-4 mr-4 text-right text-info font-weight-bold"
                                         type="switch"
@@ -272,16 +272,31 @@ function ProductEditScreen({ match, history }) {
                                 </Form.Group>
 
 
-                                <Row className="d-flex flex-row-reverse mr-2 mb-2">
-                                    <Button 
-                                        type="submit"
-                                        variant="success"
-                                        className="btn ml-4 mt-2 px-3"
-                                    >
-                                        <span className="h6">
-                                            <strong>Save</strong>
-                                        </span>
-                                    </Button>
+                                <Row className="d-flex flex-row mr-2 mb-2">
+                                    <Col>
+                                        <div className="mt-2">
+                                            <a  href={`#/product/${ product._id }`}
+                                                className="px-2 m-3 text-primary">
+                                                <Button variant="outline-primary">
+                                                <i className="fas fa-eye"></i>
+                                                    <strong> View Product Page</strong>
+                                                </Button>
+                                                
+                                            </a>
+                                        </div>
+                                    </Col>
+
+                                    <Col className="text-right">
+                                        <Button 
+                                            type="submit"
+                                            variant="success"
+                                            className="btn ml-4 mt-2 px-3"
+                                        >
+                                            <span className="h6">
+                                                <strong>Save</strong>
+                                            </span>
+                                        </Button>
+                                    </Col>
                                 </Row>
                             </Form>
                         )

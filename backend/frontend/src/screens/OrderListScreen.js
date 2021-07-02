@@ -69,8 +69,8 @@ function OrderListScreen({ history }) {
                                     <tr key={ order._id }>
                                         <td className="pt-3 pl-2 fw-500 custom-lime">
                                             <a 
-                                                href={`/order/${ order._id }`}
-                                                className="custom-lime"
+                                                href={`#/order/${ order._id }`}
+                                                className="custom-lime pl-0"
                                                 target="_blank" rel="noreferrer"
                                             >
                                                 { zeroPadding( order._id ) }

@@ -62,7 +62,7 @@ function UserListScreen({ history }) {
                                     {/* <td className="pt-3 pl-2">{ user._id }</td>  */}
                                         <td className="pt-3 pl-2">
                                             <a
-                                                href={`/admin/user/${ user._id }/edit`}
+                                                href={`#/admin/user/${ user._id }/edit`}
                                                 className="text-info fw-500"
                                             >
                                                 { user.email }

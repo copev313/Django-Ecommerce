@@ -41,6 +41,12 @@ Footer {
     font-size: 12px;
 }
 
+#footer-avocado-icon {
+    opacity: 0.5;
+    height: 15%;
+    width: 15%;
+}
+
 /* Add some spacing btw our stars in the Rating Component */
 .rating span {
     margin: 0.05rem;
@@ -170,6 +176,11 @@ Footer {
 
     #product-card-title {
         font-size: 20px;
+    }
+
+    #footer-avocado-icon {
+        height: 17%;
+        width: 17%;
     }
 }
 
