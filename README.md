@@ -7,10 +7,10 @@
  - Admin order details page
  - Admin user management
  - Complete checkout process (address, shipping, payment method)
- - Paypal / credit card intergation
+ - Paypal / credit card intregation
  - Full featured shopping cart
  - Ability to mark orders as delivered
- - Product seach feature
+ - Product search feature
  - Product pagination
  - Product reviews and ratings
  - Featured products carousel
@@ -25,7 +25,7 @@
  - Managing global state with Redux (Actions & Reducers)
  - Using Redux state in components (useDispatch & useSelector)
  - Creating an extensive back end with Django & the Django REST framework
- - JWT authentication (JSON web tokens)
+ - JWT authentication
  - Custom error handler
  - PayPal API integration
  - Project deployment 
