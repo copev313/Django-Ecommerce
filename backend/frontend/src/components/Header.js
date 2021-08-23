@@ -27,30 +27,30 @@ function Header() {
     return (
         <header>
 
-            <Navbar className="pt-3 pb-4"
+            <Navbar className="py-2 px-4"
                     bg="dark"
                     variant="dark"
                     expand="lg"
                     collapseOnSelect
-                >
-                <Container>
+            >
                     <LinkContainer to="/">
                         <Navbar.Brand className="mr-5">
                             <img src="/images/default-monochrome-min.svg" alt="logo" id="main-logo" className="ml-2 mr-5" />
                         </Navbar.Brand>
                     </LinkContainer>
-                    
+
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <div className="d-inline-block mx-auto">
-                            <SearchBox className="ml-5" />
+
+                        <div className="d-inline-block ml-auto">
+                            <SearchBox className="mr-5" />
                         </div>
                         
 
-                        <Nav className="ml-auto col-md-4 pt-3 text-right" id="right-side-nav">
+                        <Nav className="ml-auto pt-3 text-right" id="right-side-nav">
 
                             <LinkContainer to="/cart" id="cart-link-container">
-                                <Nav.Link className="ml-n2">
+                                <Nav.Link>
                                     <span className="h6">
                                         <i className="fas fa-shopping-cart"></i>{' '}
                                         <span className="fw-500">CART</span>
@@ -108,7 +108,7 @@ function Header() {
                                         </NavDropdown.Item>
                                     </LinkContainer>
 
-                                    <NavDropdown.Item className="h6 mb-n1" onClick={ logoutHandler }>
+                                    <NavDropdown.Item className="h6" onClick={ logoutHandler }>
                                         <span className="h6">
                                             <i class="fas fa-sign-out-alt pr-1"></i>{' '}
                                             LOGOUT
@@ -128,7 +128,6 @@ function Header() {
                             )}
                         </Nav>
                     </Navbar.Collapse>
-                </Container>
             </Navbar>
 
         </header>

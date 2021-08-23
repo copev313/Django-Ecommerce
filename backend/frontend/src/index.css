@@ -22,7 +22,7 @@ main { min-height: 80vh; }
 */
 
 #main-logo {
-    width: 14rem;
+    width: 11rem;
     height: auto;
 }
 
@@ -113,11 +113,15 @@ Footer {
 #admin-dropdown-menu {
     font-size: 0.80em;
     padding-top: 0.5em;
+    padding-right: 1.5em;
+    
+    margin-right: 1.75em;
 }
 
 /* Adjust the min-width of the link container around our 'CART' navbar link */
 #cart-link-container {
     min-width: fit-content;
+    padding-right: 4em;
 }
 
 /* Adjust font-size on cart screen for the 'continue shopping' button */
