@@ -6,6 +6,8 @@
 main { min-height: 80vh; }
 
 /* Precisely position our logo next to our navbar title */
+
+/* Replaced with SVG
 #website-navbar-title {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
@@ -16,6 +18,12 @@ main { min-height: 80vh; }
     letter-spacing: 0.04em;
     vertical-align: -0.1em;
     margin-left: -1.25em;
+}
+*/
+
+#main-logo {
+    width: 14rem;
+    height: auto;
 }
 
 .fw-500 {
@@ -148,11 +156,10 @@ Footer {
 .carousel img {
     display: block;
     height: 300px;
-    padding: 15px 10px 15px 10px;
+    padding: 15px 10px;
     margin: 50px;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 10%;
     object-fit: contain;
 }
 
