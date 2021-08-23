@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 function Product({ product }) {
 
     return (
-        <Card className="my-3 p-3 rounded shadow-sm product-card">
+        <Card className="my-3 px-1 py-1 shadow-sm">
             <Link to={`/product/${ product._id }`}>
                 <Card.Img 
                     src={ product.image } 
-                    className="rounded-3"
+                    className="p-0"
                 />
             </Link>
 

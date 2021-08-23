@@ -54,7 +54,7 @@ Footer {
 
 /* Add some padding around the price in the Product Component */
 .price-space {
-    padding-top: 1rem;
+    padding-top: 0.65rem;
 }
 
 
@@ -62,6 +62,10 @@ Footer {
 /* Add standardized hieght space for all Product cards. (May need*/
 #product-card-title {
     height: 4em;
+}
+
+#product-card-title:hover {
+    color: #008600;
 }
 
 
@@ -120,8 +124,7 @@ Footer {
 
 /* Carousel Component */
 .carousel {
-    background-image: linear-gradient(#FFF, #FFF, #b4b4b4, #696969);
-    /*background-image: linear-gradient(#FFF, #FFF, #ffffffbe, #ffffff00);*/
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85), rgba(180, 180, 180, 0.85), rgba(105, 105, 105, 0.85));
     border: none;
 }
 

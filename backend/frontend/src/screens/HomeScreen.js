@@ -38,13 +38,17 @@ function HomeScreen({ history }) {
             <h2 id="home-screen-latest-title">
                 <ins>Latest Products</ins>
             </h2>
+
+
             { loading ? (  
+
                 <div>
                     <br></br>
                     <Loader />
                 </div>
 
             ) : error ? ( 
+
                 <div>
                     <br></br>
                     <Message variant="danger">
@@ -52,7 +56,8 @@ function HomeScreen({ history }) {
                     </Message>
                 </div>
 
-            ) : ( 
+            ) : (products.length !== 0) ? ( 
+
                 <div>
                     <Row>
                         { products.map( (product) => (
@@ -67,7 +72,17 @@ function HomeScreen({ history }) {
                         <Paginate page={page} pages={pages} keyword={keyword} />
                     </div>
                 </div>
-            )}
+            ) : (
+                <div>
+                    <br></br>
+                    <h4>
+                        <span style={{fontWeight:500}}>No products found for search term: </span>
+                         "{ keyword.substring(keyword.search("keyword=") + 8, keyword.search("&")) }"
+                    </h4>
+                </div>
+            )
+        }
+
         </div>
     )
 }

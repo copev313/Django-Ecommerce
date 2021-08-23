@@ -16,16 +16,26 @@ from rest_framework import status
 def getProducts(request):
     # Grab the 'keyword' query params:
     query = request.query_params.get('keyword')
-
+    
+    # Grab the 'page' query params:
+    page = request.query_params.get('page')
+    
+    # Grab the 'perPage' query params:
+    perPage = request.query_params.get('perPage')
+    
+    
     if query is None:
         query = ''
+
+    if perPage is None:
+        NUM_PER_PAGE = 12
+    else:
+        NUM_PER_PAGE = int(perPage)
 
     # Case insensitive product name search:
     products = Product.objects.filter(name__icontains=query).order_by('_id')
 
     # Handle pagination:
-    NUM_PER_PAGE = 8
-    page = request.query_params.get('page')
     paginator = Paginator(products, NUM_PER_PAGE)
 
     try:
@@ -45,7 +55,8 @@ def getProducts(request):
     serializer = ProductSerializer(products, many=True)
     return Response({'products': serializer.data,
                      'page': page,
-                     'pages': paginator.num_pages})
+                     'pages': paginator.num_pages,
+                     'perPage': int(NUM_PER_PAGE) })
 
 
 # GET -- retreive featured products for the home screen carousel:
