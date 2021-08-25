@@ -32,13 +32,13 @@ function SearchBox() {
                 placeholder="Find products and stuff..."
                 name="q"
                 onChange={(e) => setKeyword(e.target.value)}
-                className="mr-2 pr-5"
+                className="pr-5 rounded-0"
             ></Form.Control>
 
             <Button
                 type="submit"
-                className="py-1 px-2"
-                variant="dark"
+                className="py-0 px-2 rounded-0"
+                variant="light"
             >
                 Search
             </Button>

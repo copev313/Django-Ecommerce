@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import SearchBox from './SearchBox';
+import CategoryNavbar from './CategoryNavbar';
 import { logout } from '../actions/userActions';
 
 
@@ -33,24 +34,25 @@ function Header() {
                     expand="lg"
                     collapseOnSelect
             >
+                <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand className="mr-5">
-                            <img src="/images/default-monochrome-min.svg" alt="logo" id="main-logo" className="ml-2 mr-5" />
+                            <img src="/images/default-monochrome-min.svg" alt="logo" id="main-logo" className="ml-2 mr-6" />
                         </Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
 
-                        <div className="d-inline-block ml-auto">
-                            <SearchBox className="mr-5" />
+                        <div className="mx-auto flex-grow-1 pl-4 pr-5 py-1">
+                            <SearchBox />
                         </div>
                         
 
-                        <Nav className="ml-auto pt-3 text-right" id="right-side-nav">
+                        <Nav className="ml-auto pt-3 pb-2 text-right" id="right-side-nav">
 
                             <LinkContainer to="/cart" id="cart-link-container">
-                                <Nav.Link>
+                                <Nav.Link className="ml-n2">
                                     <span className="h6">
                                         <i className="fas fa-shopping-cart"></i>{' '}
                                         <span className="fw-500">CART</span>
@@ -128,7 +130,11 @@ function Header() {
                             )}
                         </Nav>
                     </Navbar.Collapse>
+                </Container>
             </Navbar>
+
+            <CategoryNavbar />
+            
 
         </header>
     )

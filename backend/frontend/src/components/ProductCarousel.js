@@ -26,20 +26,28 @@ function ProductCarousel() {
                     <Carousel
                         pause="hover"
                         indicators={false}
-                        className="rounded-bottom mb-3"
+                        className="mb-3 pt-4"
                     >
                         { products.map( (product) => (
-                            <Carousel.Item key={ product._id }>
-                                <Link to={`/product/${ product._id }`} >
-                                    <Image 
-                                        src={ product.image }
-                                        alt={ product.name }
-                                        fluid
-                                    />
-                                    <Carousel.Caption className="carousel.caption" >
-                                        <h4>{ product.name }</h4>
-                                    </Carousel.Caption>
-                                </Link>
+                            <Carousel.Item key={ product._id } >
+                                    <Link to={`/product/${ product._id }`}>
+                                        <Image 
+                                            src={ product.image }
+                                            alt={ product.name }
+                                            fluid  thumbnail
+                                            className="p-1 bg-primary border-0"
+                                            style={{ borderRadius: '15px'}}
+                                        />
+                                        <Carousel.Caption className="carousel.caption " >
+                                            <div 
+                                                className="d-inline-block bg-dark text-white pt-1 px-2"
+                                                style={{ borderRadius: '5px', marginBottom: '15px' }}>
+                                                <h4>
+                                                    { product.name }
+                                                </h4>
+                                            </div>
+                                        </Carousel.Caption>
+                                    </Link>
                             </Carousel.Item>
                         ))}
                     </Carousel>

@@ -22,7 +22,7 @@ main { min-height: 80vh; }
 */
 
 #main-logo {
-    width: 11rem;
+    width: 12rem;
     height: auto;
 }
 
@@ -113,15 +113,11 @@ Footer {
 #admin-dropdown-menu {
     font-size: 0.80em;
     padding-top: 0.5em;
-    padding-right: 1.5em;
-    
-    margin-right: 1.75em;
 }
 
 /* Adjust the min-width of the link container around our 'CART' navbar link */
 #cart-link-container {
     min-width: fit-content;
-    padding-right: 4em;
 }
 
 /* Adjust font-size on cart screen for the 'continue shopping' button */
@@ -136,8 +132,12 @@ Footer {
 
 /* Carousel Component */
 .carousel {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85), rgba(180, 180, 180, 0.85), rgba(105, 105, 105, 0.85));
+    background-image: url("../src/background_images/light-dining-space.jpg");
+    background-size: cover;
+    margin-top: -1rem;
     border: none;
+    height: 450px;
+    
 }
 
 .carousel-item-next,
@@ -152,18 +152,14 @@ Footer {
 }
 
 .carousel-caption h4 {
-    color: #FFF;
-    font-weight: 500;
-    letter-spacing: 0.15px;
+    font-weight: 400;
 }
 
 .carousel img {
     display: block;
-    height: 300px;
+    height: 290px;
     padding: 15px 10px;
-    margin: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px auto 50px auto;
     object-fit: contain;
 }
 
@@ -173,6 +169,16 @@ Footer {
 
 .carousel-caption h4 {
     font-size: 2vh;
+}
+
+.cat-link {
+    color: #d8d8d8;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+}
+
+.cat-link:hover {
+    color: #ffffff;
 }
 
 

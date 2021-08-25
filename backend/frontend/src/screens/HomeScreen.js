@@ -34,23 +34,22 @@ function HomeScreen({ history }) {
     return (
         <div>
             { !keyword && <ProductCarousel /> }
-            
 
             { loading ? (  
 
-                <div>
+                <Container>
                     <br></br>
                     <Loader />
-                </div>
+                </Container>
 
             ) : error ? ( 
 
-                <div>
+                <Container>
                     <br></br>
                     <Message variant="danger">
                         { error }
                     </Message>
-                </div>
+                </Container>
 
             ) : (products.length !== 0) ? ( 
 
@@ -72,6 +71,8 @@ function HomeScreen({ history }) {
                         <Paginate page={page} pages={pages} keyword={keyword} />
                     </div>
                 </Container>
+
+
             ) : (
 
                 <Container>
@@ -86,6 +87,7 @@ function HomeScreen({ history }) {
                          "{ keyword.substring(keyword.search("keyword=") + 8, keyword.search("&")) }"
                     </h4>
                 </Container>
+
             )
         }
 
