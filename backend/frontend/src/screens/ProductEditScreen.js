@@ -221,11 +221,13 @@ function ProductEditScreen({ match, history }) {
                                             onChange={ (e) => setCategory(e.target.value) }
                                         >   
                                             <option>Select a category...</option>
+                                            <option value="Home & Living">Home & Living</option>
                                             <option value="Electronics">Electronics</option>
-                                            <option value="Home">Home</option>
                                             <option value="Jewelry">Jewelry</option>
-                                            <option value="Kitchen">Kitchen</option>
+                                            <option value="Food & Drink">Food & Drink</option>
                                             <option value="Apparel">Apparel</option>
+                                            <option value="Beauty & Wellness">Beauty & Wellness</option>
+                                            <option value="Pets">Pets</option>
                                             <option value="Other">Other</option>
                                         </Form.Control>
                                         <Form.Control.Feedback type="invalid">
