@@ -134,8 +134,6 @@ function Header() {
             </Navbar>
 
             <CategoryNavbar />
-            
-
         </header>
     )
 }

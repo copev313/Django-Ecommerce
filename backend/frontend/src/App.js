@@ -25,14 +25,13 @@ function App() {
     return (
         <Router>
             <Header />
-                
-                <main className="py-3">
+
+                <main>
                     <Container fluid='xxl'>
                         <Route path="/" component={HomeScreen} exact />
                     </Container>
 
                     <Container>
-                        
                         <Route path="/product/:id?" component={ProductScreen} />
                         <Route path="/cart/:id?" component={CartScreen} />
                         <Route path="/login" component={LoginScreen} />
@@ -49,8 +48,6 @@ function App() {
                         <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
                         <Route path="/admin/orderlist" component={OrderListScreen} />
                     </Container>
-
-
                 </main>
 
             <Footer />

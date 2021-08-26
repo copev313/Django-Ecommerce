@@ -68,7 +68,12 @@ function ProductScreen({ match, history }) {
 
     return (
         <div>
-            <Link to="/" className="btn btn-sm btn-dark mt-2 mb-4">Go Back</Link>
+            <Row className="pt-3">
+                <Col md={6} >
+                    <Link to="/" className="btn btn-sm btn-secondary mt-2 mb-4">Go Back</Link>
+                </Col>
+                <Col md={6}></Col>
+            </Row>
 
             { loading ? <Loader /> :
                 error ? ( <Message variant="danger">{ error }</Message>
@@ -78,40 +83,28 @@ function ProductScreen({ match, history }) {
                         <Col md={6}>
                             <Image  src={ product.image }
                                     alt={ product.name }
-                                    fluid 
+                                    fluid  rounded
                             />
                         </Col>
 
-                        <Col md={3}>
+                        <Col md={6} className="mx-auto text-cent">
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
-                                    <h3 class="fw-bold">{ product.name }</h3>
+                                    <h2 className="mt-2" style={{ fontWeight: 500 }}>
+                                        { product.name }
+                                    </h2>
                                 </ListGroup.Item>
 
-                                <ListGroup.Item>
+                                <ListGroup.Item className="mx-auto my-2">
                                     <Rating value={ product.rating }
                                             text={ `${ product.numReviews }` }
                                             color={ "darkgreen" }
                                     />
-                        
-                                </ListGroup.Item>
-
-
-                                <ListGroup.Item>
-                                    <p className="mt-2">
-                                        { product.description }
-                                    </p>
-
-                                    <span class="badge bg-secondary px-3 py-2 category-tag">
-                                        { product.category }
-                                    </span>
                                 </ListGroup.Item>
                             </ListGroup>
-                        </Col>
 
-                        <Col md={3}>
-                            <Card>
-                                <ListGroup variant="flush">
+                            <Card className="mt-2" style={{ width: '24rem', margin: '0 auto' }}>
+                                <ListGroup >
                                     <ListGroup.Item>
                                         <Row>
                                             <Col>Price:</Col>
@@ -137,10 +130,10 @@ function ProductScreen({ match, history }) {
                                         <ListGroup.Item>
                                             <Row>
                                                 <Col>Quantity:</Col>
-                                                <Col xs="auto" className="my-1">
+                                                <Col className="text-center mr-2">
                                                     <Form.Control
                                                         as="select"
-                                                        className="mr-4 pr-4"
+                                                        className="pr-4"
                                                         value={ qty }
                                                         onChange={ (e) => setQty(e.target.value) }
                                                     >
@@ -172,51 +165,46 @@ function ProductScreen({ match, history }) {
                                 </ListGroup>
                             </Card>
 
+                            { userInfo && userInfo.isAdmin && (
+                                        <div className="text-center mt-3">
+                                            <a  href={`#/admin/product/${ product._id }/edit`}
+                                                className="px-2 py-1 m-3 text-primary">
+                                                <Button variant="outline-primary">
+                                                    <i className="fas fa-edit" style={{ fontSize: "1.2em" }}></i>
+                                                    <strong className="pl-1"> Edit Product</strong>
+                                                </Button>
+                                            </a>
+                                        </div>
+                            )}
+                        </Col>
+
+                        <Col md={3}>
+                            
+                        {/* 
                             { product.featured && (
                                 <div className="px-2 py-3 m-3 bg-success text-center text-dark h5 rounded border border-dark">
                                      <i class="fas fa-trophy"></i>
                                     <strong> Featured Product!</strong>
                                 </div>
                             )}
-
-                            { userInfo && userInfo.isAdmin && (
-                                <div className="text-center mt-4">
-                                    <a  href={`#/admin/product/${ product._id }/edit`}
-                                        className="px-2 py-1 m-3 text-primary">
-                                        <Button variant="outline-primary">
-                                            <i className="fas fa-edit" style={{ fontSize: "1.2em" }}></i>
-                                            <strong className="pl-1"> Edit Product</strong>
-                                        </Button>
-                                    </a>
-                                </div>
-                            )}
-
+                        */}
 
                         </Col>
                     </Row>
 
-                    <Row>
-                        <Col md={6}>
-                            <h4 className="mt-4 ml-2"><ins>Reviews</ins></h4>
+                    <hr />
 
-                            { (product.reviews.length === 0) && 
-                                ( <Message variant='light'>No Reviews</Message> )
-                            }
+                    <Row className="">
+                        <Col md={6}>
+                            { product.description && (
+                                <div className="">
+                                    <h4 className="pt-4 ml-1 pb-2"><ins>Description</ins></h4>
+                                    <p className="px-1 pb-4">{ product.description }</p>
+                                </div>
+                            )}
 
                             <ListGroup variant="flush">
-                                { product.reviews.map((review) => (
-                                    <ListGroup.Item key={review._id}>
-                                        <strong>{ review.name }</strong>
-                                        <Rating value={ review.rating }
-                                                color="#B55B00"
-                                                text={ writeDate(review.createdAt) }
-                                        />
-                                        
-                                        <p className="px-1 mt-3">{ review.comment }</p>
-                                    </ListGroup.Item>
-                                ))}
-
-                                <h4 className="mt-4 ml-2">Write a Review</h4>
+                                <h4 className="mt-2 ml-2"><ins>Write a Review</ins></h4>
                                 
                                 { loadingProductReview && <Loader /> }
                                 { successProductReview && <Message variant="success">Review Submitted</Message> }
@@ -262,11 +250,33 @@ function ProductScreen({ match, history }) {
                                                 </Button>
                                             </Form>
                                         ) : (
-                                            <Message variant='dark'>
+                                            <Message variant='secondary'>
                                                 Please <Link to="/login" >log in</Link> to write a review.
                                             </Message>
                                         )}
                                     </ListGroup.Item>
+                            </ListGroup>
+                        </Col>
+
+                        <Col md={6} className="rounded">
+                            <h4 className="mt-4 ml-2"><ins>Reviews</ins></h4>
+
+                            { (product.reviews.length === 0) && 
+                                ( <Message variant='light'>No Reviews</Message> )
+                            }
+
+                            <ListGroup variant="flush">
+                                { product.reviews.map((review) => (
+                                    <ListGroup.Item key={review._id} className="bg-light rounded border mt-1">
+                                        <strong>{ review.name }</strong>
+                                        <Rating value={ review.rating }
+                                                color="#B55B00"
+                                                text={ writeDate(review.createdAt) }
+                                        />
+                                        
+                                        <p className="px-1 mt-2">{ review.comment }</p>
+                                    </ListGroup.Item>
+                                ))}
                             </ListGroup>
                         </Col>
                     </Row>

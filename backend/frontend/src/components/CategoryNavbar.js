@@ -12,7 +12,6 @@ function CategoryNavbar() {
                 variant="dark"
                 className="mt-0 mb-3 py-0 ml-auto"
             >
-
                 <Container>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" className="text-right"/>
 
@@ -31,37 +30,37 @@ function CategoryNavbar() {
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link href="#home" className="mx-2" disabled>
+                            <Nav.Link href="#home" className="mx-2">
                                 <span className="cat-link">
                                     Home & Living
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link href="#electronics" className="mx-2" disabled>
+                            <Nav.Link href="#electronics" className="mx-2">
                                 <span className="cat-link">
                                     Electronics
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link eventKey={2} href="#jewelry" className="mx-2" disabled>
+                            <Nav.Link eventKey={2} href="#jewelry" className="mx-2">
                                 <span className="cat-link">
                                     Jewelry
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link href="#food" className="mx-2" disabled>
+                            <Nav.Link href="#food" className="mx-2">
                                 <span className="cat-link">
                                     Food & Drink
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link href="#apparel" className="mx-2" disabled>
+                            <Nav.Link href="#apparel" className="mx-2">
                                 <span className="cat-link">
                                     Apparel
                                 </span>
                             </Nav.Link>
 
-                            <Nav.Link href="#beauty" className="mx-2" disabled>
+                            <Nav.Link href="#beauty" className="mx-2">
                                 <span className="cat-link">
                                     Beauty & Wellness
                                 </span>
@@ -74,7 +73,7 @@ function CategoryNavbar() {
                                 </span>
                             </Nav.Link>
                         */}
-                            <Nav.Link href="#" className="mx-2" disabled>
+                            <Nav.Link href="#" className="mx-2">
                                 <span className="cat-link">
                                     Pets
                                 </span>
@@ -88,7 +87,7 @@ function CategoryNavbar() {
                             </Nav.Link>
                         */}
 
-                            <Nav.Link href="#other" className="mx-2" disabled>
+                            <Nav.Link href="#other" className="mx-2">
                                 <span className="cat-link">
                                     Other
                                 </span>
