@@ -4,7 +4,7 @@ import React from 'react';
 function Rating({ value, text, color }) {
 
     return (
-        <div className="rating">
+        <div className="rating text-wrap">
             <span>
                 <i style={{ color }} 
                     className={
@@ -51,9 +51,11 @@ function Rating({ value, text, color }) {
                 </i>
             </span>
 
-            { text ? ( <span className="text-secondary">
-                        {` (${ text }) `}
-                    </span> ) : ""
+            
+            { text && ( 
+                <span className="text-secondary">
+                    {` (${ text }) `}
+                </span> )
             }
         </div>
     )

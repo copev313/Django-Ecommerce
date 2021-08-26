@@ -10,8 +10,7 @@ function CategoryNavbar() {
                 expand="lg"
                 bg="primary"
                 variant="dark"
-                
-                className="my-0 py-0 ml-auto"
+                className="mt-0 mb-3 py-0 ml-auto"
             >
 
                 <Container>
