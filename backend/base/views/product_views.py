@@ -32,6 +32,10 @@ def getProducts(request):
     else:
         NUM_PER_PAGE = int(perPage)
 
+    # TODO: Get all products that are enabled:
+    #products = Product.objects.filter(enabled=True)
+
+
     # Case insensitive product name search:
     products = Product.objects.filter(name__icontains=query).order_by('_id')
 
@@ -58,6 +62,12 @@ def getProducts(request):
                      'pages': paginator.num_pages,
                      'perPage': int(NUM_PER_PAGE) })
 
+
+# TODO: GET -- all products from a specific category
+@api_view(['GET'])
+def getProductsByCategory(request):
+    category = request.query_params.get('category')
+    
 
 # GET -- retreive featured products for the home screen carousel:
 @api_view(['GET'])
